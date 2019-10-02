@@ -3,11 +3,13 @@
   "description": "A new page extension",
 
   "manifest_version": 2,
-  "version": "0.1",
+  "version": "0.0.1",
 
   "chrome_url_overrides" : {
     "newtab": "happytab.html"
   },
+
+  "options_page": "options.html",
 
   "icons": {
     "64": "pineapple-64.png",
