@@ -16,5 +16,5 @@
     "128": "pineapple-128.png"
   },
 
-  "permissions": ["storage", "topSites"]
+  "permissions": ["storage", "topSites", "bookmarks"]
 }
