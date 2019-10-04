@@ -1,7 +1,56 @@
 <html>
     <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.min.css">
+        <script defer src="mdl/material.min.js"></script>
+        <link rel="stylesheet" href="options-styles.css">
     </head>
     <body>
-        <h1>Here are the options</h1>
+        <div class='main'>
+            <h1>HappyTab Options</h1>
+            <!-- Show Sidebar -->
+            <div class='option'>
+                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-sidebar">
+                    <input type="checkbox" id="switch-sidebar" class="mdl-switch__input" checked>
+                    <span class="mdl-switch__label">Show Sidebar</span>
+                </label>
+            </div>
+
+            <!-- Show Clock and Date -->
+            <div class='option'>
+                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-clock">
+                    <input type="checkbox" id="switch-clock" class="mdl-switch__input" checked>
+                    <span class="mdl-switch__label">Show Clock</span>
+                </label>
+            </div>
+
+            <!-- Show Quote of the Day -->
+            <div class='option'>
+                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-quote">
+                    <input type="checkbox" id="switch-quote" class="mdl-switch__input" checked>
+                    <span class="mdl-switch__label">Show Quote of the Day</span>
+                </label>
+            </div>
+
+            <!-- Show Weather -->
+            <div class='option'>
+                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-weather">
+                    <input type="checkbox" id="switch-weather" class="mdl-switch__input" checked>
+                    <span class="mdl-switch__label">Show Weather</span>
+                </label>
+            </div>
+
+            <!-- Weather ZipCode -->
+            <div class='option'>
+                <form action="#">
+                    <div class="mdl-textfield mdl-js-textfield">
+                        <label for="user">Weather Zipcode</label>
+                        <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="text-zipcode">
+                        <span class="mdl-textfield__error">Input is not a number!</span>
+                    </div>
+                </form>
+            </div>
+        </div>
     </body>
+    <script src="options.js"></script>
 </html>
