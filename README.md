@@ -1,6 +1,8 @@
 # new-tab-extension
 New Tab Browser Extension
 
+![Screenshot](/images/sc.png)
+
 ## Getting Started
 1. Clone the repo
 2. Open the Chrome Extensions page chrome://extensions/
