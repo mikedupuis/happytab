@@ -1,7 +1,7 @@
 # new-tab-extension
 New Tab Browser Extension
 
-![Screenshot](/images/sc.png)
+![Screenshot](screenshot.png)
 
 ## Getting Started
 1. Clone the repo
