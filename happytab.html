@@ -1,9 +1,40 @@
 <html>
     <head>
         <link rel="shortcut icon" href="pineapple-128.png" />
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <title>HappyTab</title>
     </head>
     <body>
-        <h1>HappyTab</h1>
+        <div id='cover'>
+            <div id='loader'>
+            </div>
+        </div>
+        <div id='sidenav' class='semi-transparent'>
+            <div class='clock'>
+                <div id='clock-time'></div>
+                <div id='clock-date'></div>
+            </div>
+            <div class='weather'>
+                <p id='weather-temp'></p>
+                <img id='weather-img' />
+                <p id='weather-location'></p>
+            </div>
+            <div class='quote'>
+                <p id='quote-of-the-day-quote'></p>
+                <p id='quote-of-the-day-author'></p>
+            </div>
+        </div>
+        <div id='main'>
+            <div id='options'> </div>
+        </div>
     </body>
+    <script src="options.js"></script>
+    <script src="options-data.js"></script>
+    <script src="happytab.js"></script>
+    <script src="background.js"></script>
+    <script src="quote_of_the_day.js"></script>
+    <script src="weather.js"></script>
+    <script src="clock.js"></script>
+    <script src="links.js"></script>
 </html>
 

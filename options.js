@@ -1,98 +1,111 @@
-const DEFAULTS = {
-    //showSidebar: true,
-    showClock: false,
-    showQuote: true,
-    showWeather: true,
-    zipcode: 55401
-}
-
-const STORAGE_KEYS = {
-    //SHOW_SIDEBAR: 'showSidebar',
-    SHOW_CLOCK: 'showClock',
-    SHOW_QUOTE: 'showQuote',
-    SHOW_WEATHER: 'showWeather',
-    ZIPCODE: 'zipcode',
-}
-
-const SWITCH_SIDEBAR_OPTION = {
+const SHOW_SIDEBAR_OPTION = {
     elementId: 'switch-sidebar',
     defaultValue: true,
     storageKey: 'showSidebar',
-    loader: newLoadOrDefaultBoolean,
+    loader: loadOrDefaultBoolean,
     mutator: switchSidebarChanged,
     property: 'checked'
 }
 
+const SHOW_CLOCK_OPTION = {
+    elementId: 'switch-clock',
+    defaultValue: false,
+    storageKey: 'showClock',
+    loader: loadOrDefaultBoolean,
+    mutator: switchClockChanged,
+    property: 'checked'
+}
+
+const SHOW_QUOTE_OPTION = {
+    elementId: 'switch-quote',
+    defaultValue: true,
+    storageKey: 'showQuote',
+    loader: loadOrDefaultBoolean,
+    mutator: switchQuoteChanged,
+    property: 'checked'
+}
+
+const SHOW_WEATHER_OPTION = {
+    elementId: 'switch-weather',
+    defaultValue: true,
+    storageKey: 'showWeather',
+    loader: loadOrDefaultBoolean,
+    mutator: switchWeatherChanged,
+    property: 'checked'
+}
+
+const ZIPCODE_OPTION = {
+    elementId: 'text-zipcode',
+    defaultValue: 55421,
+    storageKey: 'zipcode',
+    loader: loadOrDefault,
+    mutator: zipcodeChanged,
+    property: 'value'
+}
+
 const OPTIONS = [
-    SWITCH_SIDEBAR_OPTION
+    SHOW_SIDEBAR_OPTION,
+    SHOW_CLOCK_OPTION,
+    SHOW_QUOTE_OPTION,
+    SHOW_WEATHER_OPTION,
+    ZIPCODE_OPTION
 ]
 
-function loadOrDefault(key, defaultValue) {
-    var result = localStorage.getItem(key)
+function loadOrDefault(option) {
+    var result = localStorage.getItem(option.storageKey)
 
     if (result) {
-        return result;
+        return result
     }
 
-    localStorage.setItem(key, defaultValue)
-    return defaultValue;
+    localStorage.setItem(option.storageKey, option.defaultValue)
+    return defaultValue
 }
 
-function loadOrDefaultBoolean(key, defaultValue) {
-    return loadOrDefault(key, defaultValue) === 'true' ? true : false
+function loadOrDefaultBoolean(option) {
+    return loadOrDefault(option) == 'true' ? true : false
 }
 
-function newLoadOrDefaultBoolean(option) {
-    return loadOrDefault(option.storageKey, option.defaultValue) == 'true' ? true : false
+function updateOptionStorageFromEvent(option, inputEvent) {
+    localStorage.setItem(option.storageKey, inputEvent.target.value);
 }
 
-function loadData() {
-    var data = {}
+function switchSidebarChanged(inputEvent) {
+    console.log('switchSidebarChanged')
+    localStorage.setItem(SHOW_SIDEBAR_OPTION.storageKey, inputEvent.target.checked)
+}
 
-    data.showClock = loadOrDefaultBoolean(STORAGE_KEYS.SHOW_CLOCK, DEFAULTS.showClock)
-    data.showQuote = loadOrDefaultBoolean(STORAGE_KEYS.SHOW_QUOTE, DEFAULTS.showQuote)
-    data.showWeather = loadOrDefaultBoolean(STORAGE_KEYS.SHOW_WEATHER, DEFAULTS.showWeather)
-    data.zipcode = loadOrDefault(STORAGE_KEYS.ZIPCODE, DEFAULTS.zipcode)
+function switchClockChanged(inputEvent) {
+    console.log('switchClockChanged')
+    localStorage.setItem(SHOW_CLOCK_OPTION.storageKey, inputEvent.target.checked)
+}
+
+function switchQuoteChanged(inputEvent) {
+    console.log('switchQuoteChanged')
+    localStorage.setItem(SHOW_QUOTE_OPTION.storageKey, inputEvent.target.checked)
+}
+
+function switchWeatherChanged(inputEvent) {
+    console.log('switchWeatherChanged')
+    localStorage.setItem(SHOW_WEATHER_OPTION.storageKey, inputEvent.target.checked)
+}
+
+function zipcodeChanged(inputEvent) {
+    console.log('zipcodeChanged')
+    localStorage.setItem(ZIPCODE_OPTION.storageKey, inputEvent.target.value)
+}
+
+function loadOptionsData() {
+    data = {}
+    OPTIONS.forEach(function(option) {
+        var value = option.loader(option)
+        data[option.storageKey] = option.loader(option)
+    })
 
     return data
 }
 
-function setOptions(data) {
-    document.getElementById("switch-clock").checked = data.showClock;
-    document.getElementById("switch-quote").checked = data.showQuote;
-    document.getElementById("switch-weather").checked = data.showWeather;
-    document.getElementById("text-zipcode").value = data.zipcode;
-}
-
-function switchSidebarChanged(inputEvent) {
-    localStorage.setItem(SWITCH_SIDEBAR_OPTION.storageKey, inputEvent.target.checked)
-}
-
-function switchClockChanged(inputEvent) {
-    localStorage.setItem(STORAGE_KEYS.SHOW_CLOCK, inputEvent.target.checked)
-}
-
-function switchQuoteChanged(inputEvent) {
-    localStorage.setItem(STORAGE_KEYS.SHOW_QUOTE, inputEvent.target.checked)
-}
-
-function switchWeatherChanged(inputEvent) {
-    localStorage.setItem(STORAGE_KEYS.SHOW_WEATHER, inputEvent.target.checked)
-}
-
-function switchZipcodeChanged(inputEvent) {
-    console.log(inputEvent.target)
-    localStorage.setItem(STORAGE_KEYS.ZIPCODE, inputEvent.target.value)
-}
-
-function setChangeHandlers() {
-    document.getElementById("switch-clock").onchange = switchClockChanged;
-    document.getElementById("switch-quote").onchange = switchQuoteChanged;
-    document.getElementById("switch-weather").onchange = switchWeatherChanged;
-    document.getElementById("text-zipcode").onchange = switchZipcodeChanged;
-}
-
-function newWay() {
+function prepareOptionsUI() {
     OPTIONS.forEach(function(option) {
         var value = option.loader(option)
         var element = document.getElementById(option.elementId)
@@ -101,6 +114,3 @@ function newWay() {
     })
 }
 
-setOptions(loadData())
-setChangeHandlers()
-newWay()
