@@ -59,7 +59,7 @@ function loadOrDefault(option) {
     }
 
     localStorage.setItem(option.storageKey, option.defaultValue)
-    return defaultValue
+    return option.defaultValue
 }
 
 function loadOrDefaultBoolean(option) {
