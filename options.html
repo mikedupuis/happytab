@@ -1,54 +1,130 @@
 <html>
     <head>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        />
         <script defer src="mdl/material.min.js"></script>
-        <link rel="stylesheet" href="mdl/material.min.css">
-        <link rel="stylesheet" href="options-styles.css">
+        <link rel="stylesheet" href="mdl/material.min.css" />
+        <link rel="stylesheet" href="options-styles.css" />
     </head>
     <body>
-        <div class='main'>
-            <h1>HappyTab Options</h1>
+        <div class="main">
+            <section id="options__title">
+                <img src="pineapple-64.png" id="options__img" />
+                <h1>HappyTab Options</h1>
+            </section>
             <!-- Show Sidebar -->
-            <div class='option'>
-                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-sidebar">
-                    <input type="checkbox" id="switch-sidebar" class="mdl-switch__input" checked>
-                    <span class="mdl-switch__label">Show Sidebar</span>
-                </label>
-            </div>
-
-            <!-- Show Clock and Date -->
-            <div class='option'>
-                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-clock">
-                    <input type="checkbox" id="switch-clock" class="mdl-switch__input" checked>
-                    <span class="mdl-switch__label">Show Clock</span>
-                </label>
-            </div>
-
-            <!-- Show Quote of the Day -->
-            <div class='option'>
-                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-quote">
-                    <input type="checkbox" id="switch-quote" class="mdl-switch__input" checked>
-                    <span class="mdl-switch__label">Show Quote of the Day</span>
-                </label>
-            </div>
-
-            <!-- Show Weather -->
-            <div class='option'>
-                <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-weather">
-                    <input type="checkbox" id="switch-weather" class="mdl-switch__input" checked>
-                    <span class="mdl-switch__label">Show Weather</span>
-                </label>
-            </div>
-
-            <!-- Weather ZipCode -->
-            <div class='option'>
-                <form action="#">
-                    <div class="mdl-textfield mdl-js-textfield">
-                        <label for="user">Weather Zipcode</label>
-                        <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="text-zipcode">
-                        <span class="mdl-textfield__error">Input is not a number!</span>
-                    </div>
-                </form>
+            <div class="mdl-card mdl-shadow--2dp options__card--wide">
+                <div class="option" id="show-sidebar-tooltip">
+                    <label
+                        class="mdl-switch mdl-js-switch mdl-js-ripple-effect"
+                        for="switch-sidebar"
+                    >
+                        <input
+                            type="checkbox"
+                            id="switch-sidebar"
+                            class="mdl-switch__input"
+                            checked
+                        />
+                        <span class="mdl-switch__label">Show Sidebar</span>
+                    </label>
+                </div>
+                <span
+                    class="mdl-tooltip mdl-tooltip--right"
+                    for="show-sidebar-tooltip"
+                >
+                    Shows the sidebar
+                </span>
+                <!-- Show Clock and Date -->
+                <div class="option" id="show-clock-tooltip">
+                    <label
+                        class="mdl-switch mdl-js-switch mdl-js-ripple-effect"
+                        for="switch-clock"
+                    >
+                        <input
+                            type="checkbox"
+                            id="switch-clock"
+                            class="mdl-switch__input"
+                            checked
+                        />
+                        <span class="mdl-switch__label">Show Clock</span>
+                    </label>
+                </div>
+                <span
+                    class="mdl-tooltip mdl-tooltip--right"
+                    for="show-clock-tooltip"
+                >
+                    Shows the clock widget in the sidebar
+                </span>
+                <!-- Show Quote of the Day -->
+                <div class="option" id="show-quote-tooltip">
+                    <label
+                        class="mdl-switch mdl-js-switch mdl-js-ripple-effect"
+                        for="switch-quote"
+                    >
+                        <input
+                            type="checkbox"
+                            id="switch-quote"
+                            class="mdl-switch__input"
+                            checked
+                        />
+                        <span class="mdl-switch__label"
+                            >Show Quote of the Day</span
+                        >
+                    </label>
+                </div>
+                <span
+                    class="mdl-tooltip mdl-tooltip--right"
+                    for="show-quote-tooltip"
+                >
+                    Shows the quote widget in the sidebar
+                </span>
+                <!-- Show Weather -->
+                <div class="option" id="show-weather-tooltip">
+                    <label
+                        class="mdl-switch mdl-js-switch mdl-js-ripple-effect"
+                        for="switch-weather"
+                    >
+                        <input
+                            type="checkbox"
+                            id="switch-weather"
+                            class="mdl-switch__input"
+                            checked
+                        />
+                        <span class="mdl-switch__label">Show Weather</span>
+                    </label>
+                </div>
+                <span
+                    class="mdl-tooltip mdl-tooltip--right"
+                    for="show-weather-tooltip"
+                >
+                    Shows the weather widget in the sidebar
+                </span>
+                <!-- Weather ZipCode -->
+                <div class="option" id="show-weather-zip-tooltip">
+                    <form action="#">
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <label for="user">Weather Zipcode</label>
+                            <input
+                                class="mdl-textfield__input"
+                                type="text"
+                                pattern="-?[0-9]*(\.[0-9]+)?"
+                                id="text-zipcode"
+                            />
+                            <span class="mdl-textfield__error"
+                                >Input is not a number!</span
+                            >
+                        </div>
+                    </form>
+                </div>
+                <span
+                    class="mdl-tooltip mdl-tooltip--right"
+                    for="show-weather-zip-tooltip"
+                >
+                    Type the zipcode of the region you would like weather
+                    information to show
+                </span>
             </div>
         </div>
     </body>
