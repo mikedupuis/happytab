@@ -3,9 +3,9 @@
     height: 100%;
     overflow: hidden;
     margin: 0;
-    padding: 20px;
-    background: #eec643;
+    background: #f1d065;
 }
+
 #options__title {
     color: #011638;
     margin: 3em auto;
@@ -16,13 +16,19 @@
     height: auto;
     float: left;
 }
-.options__card--wide {
+.options__card {
     width: 500px;
     margin: 0 auto;
+    padding: 3em;
 }
 
 .option {
-    margin: 20px;
     width: fit-content;
     padding-right: 20px;
+    margin-bottom: 1em;
+}
+
+form label {
+    font-size: 0.9em;
+    text-transform: uppercase;
 }
