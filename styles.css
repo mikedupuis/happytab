@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 
 body {
     color: #ddd;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-size: 1em;
-    
-    background: url('bg.jpg') no-repeat center center fixed;
+
+    background: url("bg.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -17,11 +17,11 @@ body {
     height: 100%;
     background-color: #000;
     z-index: 9999;
-    position: fixed; 
+    position: fixed;
     margin: 0;
     padding: 0;
-    top:0;
-    left: 0; 
+    top: 0;
+    left: 0;
 }
 
 .semi-transparent {
@@ -43,28 +43,53 @@ body {
 }
 
 .card {
-    vertical-align:top;
-    
+    vertical-align: top;
     margin: 4px;
-    
     text-align: left;
-    font-size: 1.5em;
-
+    font-size: 1em;
     display: inline-block;
-    padding: 0px 10px 10px 10px;
-}
-
-.card ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+    padding: 1.5em;
+    color: #fff;
+    opacity: 0.7;
+    transition: 0.4s all ease;
+    max-width: 20em;
 }
 
 .card h1 {
-    text-align: center;
-    font-weight: 700;
+    font-weight: 400;
     font-size: 1.2em;
-    margin: 10px 0 5px 0;
+    padding-left: 1em;
+    margin: 0 0 1em 0;
+}
+
+.card ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.card:hover {
+    opacity: 1;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.card li {
+    margin-bottom: 0.25em;
+}
+
+.card li a,
+.card li a:visited {
+    color: #fff;
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+.card li a:hover {
+    opacity: 1;
+}
+
+.card ul li:first-line {
+    color: red;
 }
 
 .note {
@@ -72,7 +97,7 @@ body {
     max-width: 350px;
 }
 
-a:link {
+/* a:link {
     text-decoration: underline;
     color: inherit;
 }
@@ -92,7 +117,7 @@ a:hover {
 a:active {
     text-decoration: none;
     color: inherit;
-}
+} */
 
 .weather {
     margin-top: 0px;
@@ -121,10 +146,13 @@ a:active {
 #clock-time {
     display: inline-block;
     font-size: 3em;
+    font-weight: 600;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
 }
 
 #clock-date {
     font-size: 1.5em;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
 }
 
 .quote {
@@ -132,13 +160,36 @@ a:active {
     max-width: 300px;
 }
 
+.quote {
+    padding: 0 0.75em 0.75em 0.75em;
+    font-size: 1.2em;
+    max-width: 300px;
+    transition: 0.5s all ease;
+}
+
+.quote::before {
+    content: "\201c \201d";
+    position: relative;
+    font-size: 6em;
+    margin: 0 0 0 -15px;
+    padding: 0;
+    opacity: 0.3;
+    z-index: -100;
+}
+
+.quote:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
 #quote-of-the-day-quote {
     font-style: italic;
+    margin-top: -5.5em;
 }
 
 #quote-of-the-day-author {
-    margin-top: 10px;
-    font-style: bold;
+    margin-top: 1em;
+    font-weight: 600;
+    font-size: 0.6em;
+    text-transform: uppercase;
 }
 
 hr {
@@ -151,22 +202,27 @@ hr {
 }
 
 .glow {
-  font-size: 80px;
-  color: #fff;
-  text-align: center;
-  -webkit-animation: glow 1s ease-in-out infinite alternate;
-  -moz-animation: glow 1s ease-in-out infinite alternate;
-  animation: glow 1s ease-in-out infinite alternate;
+    font-size: 80px;
+    color: #fff;
+    text-align: center;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
 }
 
 @-webkit-keyframes glow {
-  from {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
-  }
-  to {
-    text-shadow: 0 0 20px #fff, 0 0 30px #f5a, 0 0 40px #f5a, 0 0 50px #f5a, 0 0 60px #f5a, 0 0 70px #f5a, 0 0 80px #f5a;
-    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
-  }
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073,
+            0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073,
+            0 0 70px #e60073;
+    }
+    to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #f5a, 0 0 40px #f5a, 0 0 50px #f5a,
+            0 0 60px #f5a, 0 0 70px #f5a, 0 0 80px #f5a;
+        text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6,
+            0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6,
+            0 0 80px #ff4da6;
+    }
 }
 
 .slide {
@@ -176,11 +232,15 @@ hr {
 }
 
 @-webkit-keyframes slide {
-    100% { left: 0; }
+    100% {
+        left: 0;
+    }
 }
 
 @keyframes slide {
-    100% { left: 0; }
+    100% {
+        left: 0;
+    }
 }
 
 #loader {
@@ -198,12 +258,16 @@ hr {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .hidden {
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s 1s, opacity 1s linear;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 1s, opacity 1s linear;
 }
