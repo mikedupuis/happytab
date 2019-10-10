@@ -1,10 +1,12 @@
-const KEY = 'key'
-
 var IMPERIAL = "imperial"
 var METRIC = "metric"
-var units = IMPERIAL
+var KELVIN = "kelvin"
 
 var zipCode = options.zipcode
+var apiKey = options.weatherApiKey
+var units = options.weatherUnits
+
+console.log("units", units)
 
 function setTemp(data) {
     var suffix = ""
@@ -12,6 +14,8 @@ function setTemp(data) {
         suffix = ' \xB0F';
     } else if (units == METRIC) {
         suffix = ' \xB0C';
+    } else if (units == KELVIN) {
+        suffix = ' K';
     }
 
     document.getElementById("weather-temp").textContent = Math.round(data.main.temp) + suffix;
@@ -45,7 +49,7 @@ function fetchWeather() {
         // TODO: Handle errors
     }
 
-    request.open('GET', 'https://api.openweathermap.org/data/2.5/weather?zip=' + zipCode + ',us&units=' + units + '&appid&appid=' + KEY, true)
+    request.open('GET', 'https://api.openweathermap.org/data/2.5/weather?zip=' + zipCode + ',us&units=' + units + '&appid&appid=' + apiKey, true)
     request.send();
 }
 
