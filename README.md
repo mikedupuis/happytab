@@ -1,7 +1,7 @@
 # HappyTab
 
 <p align="center">
-  <img src="./pineapple-128.png">
+  <img src="assets/pineapple-128.png">
 </p>
 
 <br/>
