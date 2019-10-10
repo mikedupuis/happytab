@@ -25,6 +25,13 @@
 .option {
     width: fit-content;
     padding-right: 20px;
+}
+
+.option-switch {
     margin-bottom: 1em;
+}
+
+form {
+    margin: 0;
 }
 
