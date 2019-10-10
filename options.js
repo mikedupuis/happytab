@@ -34,6 +34,15 @@ const SHOW_WEATHER_OPTION = {
     property: 'checked'
 }
 
+const WEATHER_API_KEY_OPTION = {
+    elementId: 'text-weather-api-key',
+    defaultValue: '',
+    storageKey: 'weatherApiKey',
+    loader: loadOrDefault,
+    mutator: weatherApiKeyChanged,
+    property: 'value'
+}
+
 const ZIPCODE_OPTION = {
     elementId: 'text-zipcode',
     defaultValue: 55421,
@@ -43,12 +52,24 @@ const ZIPCODE_OPTION = {
     property: 'value'
 }
 
+const UNITS_OPTION = {
+    elementId: 'weather-units',
+    defaultValue: 'imperial',
+    storageKey: 'weatherUnits',
+    loader: loadOrDefault,
+    mutator: weatherUnitsChanged,
+    property: 'value'
+}
+
+
 const OPTIONS = [
     SHOW_SIDEBAR_OPTION,
     SHOW_CLOCK_OPTION,
     SHOW_QUOTE_OPTION,
     SHOW_WEATHER_OPTION,
-    ZIPCODE_OPTION
+    ZIPCODE_OPTION,
+    WEATHER_API_KEY_OPTION,
+    UNITS_OPTION
 ]
 
 function loadOrDefault(option) {
@@ -66,33 +87,32 @@ function loadOrDefaultBoolean(option) {
     return loadOrDefault(option) == 'true' ? true : false
 }
 
-function updateOptionStorageFromEvent(option, inputEvent) {
-    localStorage.setItem(option.storageKey, inputEvent.target.value);
-}
-
 function switchSidebarChanged(inputEvent) {
-    console.log('switchSidebarChanged')
     localStorage.setItem(SHOW_SIDEBAR_OPTION.storageKey, inputEvent.target.checked)
 }
 
 function switchClockChanged(inputEvent) {
-    console.log('switchClockChanged')
     localStorage.setItem(SHOW_CLOCK_OPTION.storageKey, inputEvent.target.checked)
 }
 
 function switchQuoteChanged(inputEvent) {
-    console.log('switchQuoteChanged')
     localStorage.setItem(SHOW_QUOTE_OPTION.storageKey, inputEvent.target.checked)
 }
 
 function switchWeatherChanged(inputEvent) {
-    console.log('switchWeatherChanged')
     localStorage.setItem(SHOW_WEATHER_OPTION.storageKey, inputEvent.target.checked)
 }
 
 function zipcodeChanged(inputEvent) {
-    console.log('zipcodeChanged')
     localStorage.setItem(ZIPCODE_OPTION.storageKey, inputEvent.target.value)
+}
+
+function weatherApiKeyChanged(inputEvent) {
+    localStorage.setItem(WEATHER_API_KEY_OPTION.storageKey, inputEvent.target.value)
+}
+
+function weatherUnitsChanged(inputEvent) {
+    localStorage.setItem(UNITS_OPTION.storageKey, inputEvent.target.value)
 }
 
 function loadOptionsData() {

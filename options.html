@@ -101,6 +101,22 @@
                 >
                     Shows the weather widget in the sidebar
                 </span>
+                <!-- Weather Units -->            
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <label for="user">Weather Units</label>
+                    <select class="mdl-textfield__input" id="weather-units" name="weather-units">
+                        <option value="imperial">Imperial</option>
+                        <option value="metric">Metric</option>
+                        <option value="kelvin">Kelvin</option>
+                    </select>
+                </div>
+                <span
+                    class="mdl-tooltip mdl-tooltip--right"
+                    for="weather-units"
+                >
+                    Select the units you wish to see
+                </span>
+
                 <!-- Weather ZipCode -->
                 <div class="option" id="show-weather-zip-tooltip">
                     <form action="#">
@@ -124,6 +140,25 @@
                 >
                     Type the zipcode of the region you would like weather
                     information to show
+                </span>
+                <!-- Weather API Key -->
+                <div class="option" id="show-weather-api-key-tooltip">
+                    <form action="#">
+                        <div class="mdl-textfield mdl-js-textfield">
+                            <label for="user">OpenWeatherMap API Key</label>
+                            <input
+                                class="mdl-textfield__input"
+                                type="text"
+                                id="text-weather-api-key"
+                            />
+                        </div>
+                    </form>
+                </div>
+                <span
+                    class="mdl-tooltip mdl-tooltip--right"
+                    for="show-weather-api-key-tooltip"
+                >
+                    Type your API Key for https://openweathermap.org/api
                 </span>
             </div>
         </div>
