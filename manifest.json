@@ -12,8 +12,8 @@
   "options_page": "options.html",
 
   "icons": {
-    "64": "pineapple-64.png",
-    "128": "pineapple-128.png"
+    "64": "assets/pineapple-64.png",
+    "128": "assets/pineapple-128.png"
   },
 
   "permissions": ["storage", "topSites", "bookmarks"]
