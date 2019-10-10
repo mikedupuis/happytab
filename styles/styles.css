@@ -41,12 +41,12 @@ body {
 
 #main {
     margin-left: 325px;
+    columns: 23em;
 }
 
 .card {
     vertical-align: top;
     display: inline-block;
-    max-width: 24em;
     text-align: left;
     font-size: 1em;
     margin: 4px;
