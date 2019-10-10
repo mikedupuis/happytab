@@ -28,13 +28,13 @@ You need Chrome installed on your computer
 
 You should see the following:
 
-![Screenshot](./screenshot.png)
+![Screenshot](assets/screenshot.png)
 
 ### Configuration
 
 A number of settings can be configured in the Options page:
 
-![Options](./options.png)
+![Options](assets/options.png)
 
 ## Built With
 
