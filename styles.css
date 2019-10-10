@@ -29,13 +29,14 @@ body {
 }
 
 #sidenav {
+    box-sizing: border-box;
     height: 100%;
     width: 305px;
     position: fixed;
     z-index: 1;
     top: 0;
     left: -315px;
-    padding: 10px 10px 10px 10px;
+    padding: 12px;
 }
 
 #main {
@@ -44,15 +45,14 @@ body {
 
 .card {
     vertical-align: top;
-    margin: 4px;
+    display: inline-block;
     text-align: left;
     font-size: 1em;
-    display: inline-block;
+    margin: 4px;
     padding: 1.5em;
     color: #fff;
-    opacity: 0.7;
+    opacity: 0.8;
     transition: 0.4s all ease;
-    max-width: 20em;
 }
 
 .card h1 {
@@ -70,22 +70,25 @@ body {
 
 .card:hover {
     opacity: 1;
+    background: rgba(0, 0, 0, 0.7);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
 .card li {
-    margin-bottom: 0.25em;
+    margin-bottom: 0.5em;
 }
 
 .card li a,
 .card li a:visited {
     color: #fff;
     text-decoration: none;
-    opacity: 0.8;
+    opacity: 0.7;
+    transition: 0.6s ease all;
 }
 
 .card li a:hover {
     opacity: 1;
+    text-decoration: underline;
 }
 
 .card ul li:first-line {
@@ -96,28 +99,6 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
     max-width: 350px;
 }
-
-/* a:link {
-    text-decoration: underline;
-    color: inherit;
-}
-
-a:visited {
-    text-decoration: none;
-    color: inherit;
-}
-
-a:hover {
-    text-align: center;
-    -webkit-animation: glow 1s ease-in-out infinite alternate;
-    -moz-animation: glow 1s ease-in-out infinite alternate;
-    animation: glow 1s ease-in-out infinite alternate;
-}
-
-a:active {
-    text-decoration: none;
-    color: inherit;
-} */
 
 .weather {
     margin-top: 0px;
@@ -151,8 +132,8 @@ a:active {
 }
 
 #clock-date {
-    font-size: 1.5em;
     text-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+    text-transform: uppercase;
 }
 
 .quote {
@@ -178,7 +159,7 @@ a:active {
 }
 
 .quote:hover {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.2);
 }
 #quote-of-the-day-quote {
     font-style: italic;
