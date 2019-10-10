@@ -1,0 +1,257 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat|Crimson+Text&display=swap");
+
+body {
+    color: #ddd;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1em;
+
+    background: url("../bg.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#cover {
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    z-index: 9999;
+    position: fixed;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+}
+
+.semi-transparent {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+#sidenav {
+    box-sizing: border-box;
+    height: 100%;
+    width: 305px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: -315px;
+    padding: 12px;
+}
+
+#main {
+    margin-left: 325px;
+    columns: 23em;
+}
+
+.card {
+    vertical-align: top;
+    display: inline-block;
+    text-align: left;
+    font-size: 1em;
+    margin: 4px;
+    padding: 1.5em;
+    color: #fff;
+    opacity: 0.8;
+    transition: 0.5s all ease;
+}
+
+.card h1 {
+    font-weight: 400;
+    font-size: 1.2em;
+    padding-left: 1em;
+    margin: 0 0 1em 0;
+}
+
+.card ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.card:hover {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.card li {
+    margin-bottom: 0.5em;
+}
+
+.card li a,
+.card li a:visited {
+    color: #fff;
+    text-decoration: none;
+    opacity: 0.7;
+    transition: 0.6s ease all;
+}
+
+.card li a:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.card ul li:first-line {
+    color: red;
+}
+
+.note {
+    background-color: rgba(0, 0, 0, 0.5);
+    max-width: 350px;
+}
+
+.weather {
+    margin-top: 0px;
+    padding: 0px;
+}
+
+#weather-temp {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 3em;
+    line-height: 100px;
+    margin: 0px;
+}
+
+#weather-location {
+    display: inline-block;
+    font-size: 1.5em;
+    margin: 0px;
+}
+
+#weather-img {
+    display: inline-block;
+    margin: 0px;
+}
+
+#clock-time {
+    display: inline-block;
+    font-size: 3em;
+    font-weight: 600;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+}
+
+#clock-date {
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+    text-transform: uppercase;
+}
+
+.quote {
+    font-family: "Crimson Text", serif;
+    font-weight: 300;
+    font-size: 1.1em;
+    line-height: 1.3;
+    max-width: 300px;
+    padding: 0.75em 1em;
+    box-sizing: border-box;
+    transition: 0.5s all ease;
+}
+
+.quote::before {
+    content: "\201c \201d";
+    font-size: 6em;
+    position: relative;
+    top: 50px;
+    line-height: 0;
+    margin: 0 0 0 -15px;
+    padding: 0;
+    opacity: 0.3;
+    z-index: -100;
+}
+
+.quote:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#quote-of-the-day-quote {
+    font-style: italic;
+}
+
+#quote-of-the-day-author {
+    margin-top: 1em;
+    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 0.6em;
+    text-transform: uppercase;
+}
+
+hr {
+    margin: 10px;
+    border: 0;
+    height: 2px;
+    background: #333;
+    background-image: linear-gradient(to right, #fff, #555);
+    opacity: 0.4;
+}
+
+.glow {
+    font-size: 80px;
+    color: #fff;
+    text-align: center;
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073,
+            0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073,
+            0 0 70px #e60073;
+    }
+    to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #f5a, 0 0 40px #f5a, 0 0 50px #f5a,
+            0 0 60px #f5a, 0 0 70px #f5a, 0 0 80px #f5a;
+        text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6,
+            0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6,
+            0 0 80px #ff4da6;
+    }
+}
+
+.slide {
+    -webkit-animation: slide 0.5s forwards;
+    -webkit-animation-delay: 2s;
+    animation: slide 0.5s forwards;
+}
+
+@-webkit-keyframes slide {
+    100% {
+        left: 0;
+    }
+}
+
+@keyframes slide {
+    100% {
+        left: 0;
+    }
+}
+
+#loader {
+    top: 30%;
+    left: 50%;
+    position: fixed;
+    margin-top: -60px;
+    margin-left: -60px;
+    border: 1px solid #333;
+    border-top: 1px solid #fff;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 1s, opacity 1s linear;
+}
