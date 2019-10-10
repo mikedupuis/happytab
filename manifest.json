@@ -6,14 +6,14 @@
   "version": "0.0.1",
 
   "chrome_url_overrides" : {
-    "newtab": "happytab.html"
+    "newtab": "html/happytab.html"
   },
 
-  "options_page": "options.html",
+  "options_page": "html/options.html",
 
   "icons": {
-    "64": "pineapple-64.png",
-    "128": "pineapple-128.png"
+    "64": "assets/pineapple-64.png",
+    "128": "assets/pineapple-128.png"
   },
 
   "permissions": ["storage", "topSites", "bookmarks"]
