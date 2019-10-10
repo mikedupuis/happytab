@@ -30,6 +30,12 @@ You should see the following:
 
 ![Screenshot](./screenshot.png)
 
+### Configuration
+
+A number of settings can be configured in the Options page:
+
+![Options](./options.png)
+
 ## Built With
 
 Good ol' fashioned JavaScript
