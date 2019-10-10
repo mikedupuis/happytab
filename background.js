@@ -1,5 +1,3 @@
-const DEFAULT_BACKGROUND_URL = 'assets/bg.jpg'
-
 Array.prototype.shuffle = function() {
     var input = this;
      
@@ -53,7 +51,7 @@ function fetchAndSetBackgroundImage() {
             if (request.status === 200) {
                 var data = JSON.parse(this.response);
 
-                var url = DEFAULT_BACKGROUND_URL
+                var url = 'bg.jpg'
                 var shuffled = data.shuffle();
                 for (var i = 0; i < shuffled.length; i++) {
                     var image = shuffled[i]
@@ -65,12 +63,12 @@ function fetchAndSetBackgroundImage() {
                 }
                 setBackgroundImage(url);
             } else {
-                setBackgroundImage(DEFAULT_BACKGROUND_URL);
+                setBackgroundImage('bg.jpg');
             }
         }
     }
     request.ontimeout = function () {
-        setBackgroundImage(DEFAULT_BACKGROUND_URL);
+        setBackgroundImage('bg.jpg');
     }
 
     // Max page as of 9/23/19
@@ -82,7 +80,7 @@ function fetchAndSetBackgroundImage() {
 
 console.log(options)
 if (options.showSidebar) {
-    document.getElementById('main').style['margin-left'] = '310px'
+    document.getElementById('main').style['margin-left'] = '325px'
     //margin-left: 325px;
 } else {
     document.getElementById('sidenav').style.display = 'none'
