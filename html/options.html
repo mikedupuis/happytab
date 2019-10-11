@@ -80,6 +80,29 @@
                 >
                     Shows the quote widget in the sidebar
                 </span>
+                <!-- Show NFL Score -->
+                <div class="option option-switch" id="show-nfl-tooltip">
+                    <label
+                        class="mdl-switch mdl-js-switch mdl-js-ripple-effect"
+                        for="switch-nfl"
+                    >
+                        <input
+                            type="checkbox"
+                            id="switch-nfl"
+                            class="mdl-switch__input"
+                            checked
+                        />
+                        <span class="mdl-switch__label"
+                            >Show NFL Score</span
+                        >
+                    </label>
+                </div>
+                <span
+                    class="mdl-tooltip mdl-tooltip--right"
+                    for="show-nfl-tooltip"
+                >
+                    Shows the NFL Score widget in the sidebar
+                </span>
                 <!-- Show Weather -->
                 <div class="option option-switch" id="show-weather-tooltip">
                     <label
@@ -141,6 +164,7 @@
                     Type the zipcode of the region you would like weather
                     information to show
                 </span>
+                <div class="option" id=""
                 <!-- Weather API Key -->
                 <div class="option" id="show-weather-api-key-tooltip">
                     <form action="#">
@@ -160,6 +184,52 @@
                     for="show-weather-api-key-tooltip"
                 >
                     Type your API Key for https://openweathermap.org/api
+                </span>
+                <!-- NFL TEAM -->
+                <div class="option" id="nfl-team-tooltip">
+                        <div class="mdl-textfield mdl-js-textfield">
+                        <label for="user">NFL TEAM</label>
+                        <select class="mdl-textfield__input" id="nfl-team" name="nfl-team">
+                            <option value="ari">ARI</option>
+                            <option value="atl">ATL</option>
+                            <option value="bal">BAL</option>
+                            <option value="buf">BUF</option>
+                            <option value="car">CAR</option>
+                            <option value="chi">CHI</option>
+                            <option value="cin">CIN</option>
+                            <option value="cle">CLE</option>
+                            <option value="dal">DAL</option>
+                            <option value="den">DEN</option>
+                            <option value="det">DET</option>
+                            <option value="gb">GB</option>
+                            <option value="hou">HOU</option>
+                            <option value="ind">IND</option>
+                            <option value="jax">JAX</option>
+                            <option value="kc">KC</option>
+                            <option value="lac">LAC</option>
+                            <option value="lar">LAR</option>
+                            <option value="mia">MIA</option>
+                            <option value="min">MIN</option>
+                            <option value="ne">NE</option>
+                            <option value="no">NO</option>
+                            <option value="nyg">NYG</option>
+                            <option value="nyj">NYJ</option>
+                            <option value="oak">OAK</option>
+                            <option value="phi">PHI</option>
+                            <option value="pit">PIT</option>
+                            <option value="sea">SEA</option>
+                            <option value="sf">SF</option>
+                            <option value="tb">TB</option>
+                            <option value="ten">TEN</option>
+                            <option value="was">WAS</option>
+                        </select>
+                    </div>
+                </div>
+                <span
+                    class="mdl-tooltip mdl-tooltip--right"
+                    for="nfl-team-tooltip"
+                >
+                    Type your favorite NFL Team Abbreviation
                 </span>
             </div>
         </div>
