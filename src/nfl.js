@@ -1,10 +1,12 @@
 var request = new XMLHttpRequest()
 const team = options.nflTeam.toUpperCase();
-var homeScore, awayScor, homeTeam, awayTeam;
+var homeScore, awayScore, homeTeam, awayTeam, quarter, timeReamining;
 
 function renderScore() {
+    var clock = timeReamining === null ? "Not Live" : "Q" + quarter + " - " + timeReamining;
     document.getElementById("nfl-away-team").textContent = awayTeam + " - " + awayScore;
     document.getElementById("nfl-home-team").textContent = homeTeam + " - " + homeScore;
+    document.getElementById("nfl-game-time").textContent = clock;
 }
 
 function renderError() {
@@ -19,6 +21,10 @@ function searchForTeam(xml) {
             awayTeam = scores[x].getAttribute('v');
             homeScore = scores[x].getAttribute('hs');
             awayScore = scores[x].getAttribute('vs');
+            timeReamining = scores[x].getAttribute('k');
+            if (timeReamining != null) {
+                quarter = scores[x].getAttribute('q');
+            }
             renderScore();
             return;
         }
