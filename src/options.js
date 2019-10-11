@@ -54,7 +54,7 @@ const WEATHER_API_KEY_OPTION = {
 
 const NFL_TEAM_OPTION = {
     elementId: 'nfl-team',
-    defaultValue: '',
+    defaultValue: 'sea',
     storageKey: 'nflTeam',
     loader: loadOrDefault,
     mutator: nflTeamChanged,

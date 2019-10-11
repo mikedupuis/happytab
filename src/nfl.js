@@ -1,9 +1,12 @@
 var request = new XMLHttpRequest()
 const team = options.nflTeam.toUpperCase();
-var homeScore, awayScore, homeTeam, awayTeam, quarter, timeReamining;
+var homeScore, awayScore, homeTeam, awayTeam, quarter, timeReamining, day, time;
 
 function renderScore() {
-    var clock = timeReamining === null ? "Not Live" : "Q" + quarter + " - " + timeReamining;
+    var clock = timeReamining != null ? "Q" + quarter + " - " + timeReamining : 
+                    quarter === "F" ? "Final" : 
+                    quarter === "P" ? "Game at " + time + "PM EST/EDT " + day :
+                    quarter === "H" ? "Half-Time" : "Please check schedule for game time";
     document.getElementById("nfl-away-team").textContent = awayTeam + " - " + awayScore;
     document.getElementById("nfl-home-team").textContent = homeTeam + " - " + homeScore;
     document.getElementById("nfl-game-time").textContent = clock;
@@ -22,9 +25,9 @@ function searchForTeam(xml) {
             homeScore = scores[x].getAttribute('hs');
             awayScore = scores[x].getAttribute('vs');
             timeReamining = scores[x].getAttribute('k');
-            if (timeReamining != null) {
-                quarter = scores[x].getAttribute('q');
-            }
+            quarter = scores[x].getAttribute('q');
+            day = scores[x].getAttribute('d');
+            time = scores[x].getAttribute('t');
             renderScore();
             return;
         }
