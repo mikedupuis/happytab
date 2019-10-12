@@ -29,7 +29,7 @@
             <p id='birthdays-title'>Upcoming birthdays</p>
             <ul id='upcoming-birthdays'></ul>
 
-            <button id='manage-birthdays'>Manage birthdays</button>
+            <button id='manage-birthdays' class='birthday-btn'>Manage birthdays</button>
             <div class="modal">
                 <div class="modal-content">
                     <span class="close-button">&times;</span>
@@ -39,12 +39,18 @@
                     </div>
                     <div id='add-birthdays'>
                         <form>
-                            <input id='birthday-name' type='text' placeholder='Name' />
-                            <input id='birthday-date' type='date' />
-                            <button id='save-birthday' type='button'>
-                                Opa!
+                            <input required id='birthday-name' type='text' placeholder='Name' />
+                            <input required id='birthday-date' type='date' />
+                            <button class='birthday-btn' id='save-birthday' type='button'>
+                                Save birthday
                             </button>
                         </form>
+                        <hr>
+                        <div id='set-days'>
+                            <p>I want to see the upcoming birthdays with <input id='difference-in-days' type='number' min='1' max='31' />
+                                days in advance </p>
+                            <!-- <button id='set-difference-in-days' class='birthday-btn'>Set</button> -->
+                        </div>
                     </div>
                 </div>
             </div>

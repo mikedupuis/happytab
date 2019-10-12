@@ -185,6 +185,57 @@ hr {
     opacity: 0.4;
 }
 
+.birthdays li {
+    list-style-type: none;
+}
+
+.birthday-btn {
+    background-color: #555a;
+    font-size: .7em;
+    color: #fff;
+    width: 10em;
+    height: 3em;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+}
+
+.birthday-btn:hover {
+    transition: .25s;
+    background-color: #333;
+}
+
+.birthday-btn:focus {
+    transition: .25s;
+    background-color: #111;
+}
+
+.delete-btn {
+    margin-left: 3%;
+    width: 5em;
+    height: 2.3em;
+}
+
+.birthday-btn#save-birthday {
+    width: 8em;
+    height: 3em;
+}
+
+.modal input {
+    height: 2em;
+    border: none;
+    width: 35%;
+    border-radius: 3px;
+    padding: 5px;
+    background-color: #000;
+    color: #fff;
+    outline: none;
+}
+
+#difference-in-days {
+    width: 10%;
+}
+
 .modal {
     position: fixed;
     left: 0;
@@ -204,7 +255,6 @@ hr {
     transform: translate(-50%, -50%);
     background-color: rgba(0, 0, 0, 0.5);
     padding: 1rem 1.5rem;
-    width: 24rem;
     border-radius: 0.15rem;
 }
 .close-button {
