@@ -15,7 +15,8 @@ function getBirthday() {
     console.log(yyyy)
 
     saveBirthday(name, date)
-    displayBirthday(name, date)
+    displayUpcomingBirthdays(name, date)
+    displayAllBirthdays(name, date, --birthdays.length)
 }
 
 function saveBirthday(name, date) {
@@ -24,17 +25,24 @@ function saveBirthday(name, date) {
     });
 }
 
+function deleteBirthday(index) {
+    birthdays.splice(index, 1)
+    chrome.storage.sync.set({ birthdays: birthdays }, function () {
+    });
+}
+
 function loadBirthdays() {
     chrome.storage.sync.get(['birthdays'], function (result) {
-        result.birthdays.forEach(element => {
-            displayBirthday(element.name, element.date)
+        result.birthdays.forEach((element, index) => {
+            displayUpcomingBirthdays(element.name, element.date)
+            displayAllBirthdays(element.name, element.date, index)
         });
         birthdays = result.birthdays
     });
 
 }
 
-function displayBirthday(name, date) {
+function displayUpcomingBirthdays(name, date) {
 
     let differenceInDaysSeting = 1
 
@@ -51,6 +59,14 @@ function displayBirthday(name, date) {
         item.className = 'birthdays-item'
         document.getElementById('upcoming-birthdays').appendChild(item)
     }
+}
+
+function displayAllBirthdays(name, date, index) {
+    let birthday = document.createTextNode(`${name} - ${date} - ${index}`)
+    let item = document.createElement('li')
+    item.appendChild(birthday)
+    item.className = 'birthdays-item'
+    document.getElementById('all-birthdays').appendChild(item)
 }
 
 function getCurrentDate() {
@@ -72,18 +88,23 @@ function clearStorage() {
     })
 }
 
+function toggleModal() {
+    modal.classList.toggle("show-modal");
+}
+
+function windowOnClick(event) {
+    if (event.target === modal) {
+        toggleModal();
+    }
+}
+
+// Open modal
+let modal = document.querySelector(".modal");
+document.getElementById("manage-birthdays").addEventListener("click", toggleModal);
+//Close modal
+document.querySelector(".close-button").addEventListener("click", toggleModal);
+window.addEventListener("click", windowOnClick);
+
 document.getElementById('save-birthday').addEventListener('click', getBirthday)
 
-// To set two dates to two variables 
-let date1 = new Date("2019-01-31");
-var date2 = new Date("2019-01-31");
-
-// To calculate the time difference of two dates 
-var Difference_In_Time = date2.getTime() - date1.getTime();
-
-// To calculate the no. of days between two dates 
-var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
-
-console.log(Difference_In_Days)
-
-console.log(getCurrentDate())
+// clearStorage();
