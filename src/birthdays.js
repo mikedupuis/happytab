@@ -148,6 +148,8 @@ document.getElementById("manage-birthdays").addEventListener("click", toggleModa
 document.querySelector(".close-button").addEventListener("click", toggleModal)
 window.addEventListener("click", windowOnClick)
 
+// get dirthday
+document.getElementById('save-birthday').addEventListener('click', getBirthday)
 
 document.getElementById('difference-in-days').addEventListener('change', () => {
     let DifferenceInDays = document.getElementById('difference-in-days')
@@ -155,5 +157,11 @@ document.getElementById('difference-in-days').addEventListener('change', () => {
 })
 
 
-// get dirthday
-document.getElementById('save-birthday').addEventListener('click', getBirthday)
+function hideBirthdays() {
+    document.getElementsByClassName('birthdays')[0].setAttribute('style', 'display: none')
+}
+
+
+if (!options.showBirthdays) {
+    hideBirthdays();
+}

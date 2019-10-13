@@ -25,6 +25,15 @@ const SHOW_QUOTE_OPTION = {
     property: 'checked'
 }
 
+const SHOW_BIRTHDAYS_OPTION = {
+    elementId: 'switch-birthdays',
+    defaultValue: true,
+    storageKey: 'showBirthdays',
+    loader: loadOrDefaultBoolean,
+    mutator: switchBirthdayChanged,
+    property: 'checked'
+}
+
 const SHOW_WEATHER_OPTION = {
     elementId: 'switch-weather',
     defaultValue: true,
@@ -66,6 +75,7 @@ const OPTIONS = [
     SHOW_SIDEBAR_OPTION,
     SHOW_CLOCK_OPTION,
     SHOW_QUOTE_OPTION,
+    SHOW_BIRTHDAYS_OPTION,
     SHOW_WEATHER_OPTION,
     ZIPCODE_OPTION,
     WEATHER_API_KEY_OPTION,
@@ -97,6 +107,10 @@ function switchClockChanged(inputEvent) {
 
 function switchQuoteChanged(inputEvent) {
     localStorage.setItem(SHOW_QUOTE_OPTION.storageKey, inputEvent.target.checked)
+}
+
+function switchBirthdayChanged(inputEvent) {
+    localStorage.setItem(SHOW_BIRTHDAYS_OPTION.storageKey, inputEvent.target.checked)
 }
 
 function switchWeatherChanged(inputEvent) {
