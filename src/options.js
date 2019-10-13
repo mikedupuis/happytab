@@ -31,6 +31,12 @@ const SHOW_BIRTHDAYS_OPTION = {
     storageKey: 'showBirthdays',
     loader: loadOrDefaultBoolean,
     mutator: switchBirthdayChanged,
+const SHOW_NFL_OPTION = {
+    elementId: 'switch-nfl',
+    defaultValue: true,
+    storageKey: 'showNFL',
+    loader: loadOrDefaultBoolean,
+    mutator: switchNFLChanged,
     property: 'checked'
 }
 
@@ -49,6 +55,15 @@ const WEATHER_API_KEY_OPTION = {
     storageKey: 'weatherApiKey',
     loader: loadOrDefault,
     mutator: weatherApiKeyChanged,
+    property: 'value'
+}
+
+const NFL_TEAM_OPTION = {
+    elementId: 'nfl-team',
+    defaultValue: 'sea',
+    storageKey: 'nflTeam',
+    loader: loadOrDefault,
+    mutator: nflTeamChanged,
     property: 'value'
 }
 
@@ -76,9 +91,11 @@ const OPTIONS = [
     SHOW_CLOCK_OPTION,
     SHOW_QUOTE_OPTION,
     SHOW_BIRTHDAYS_OPTION,
+    SHOW_NFL_OPTION,
     SHOW_WEATHER_OPTION,
     ZIPCODE_OPTION,
     WEATHER_API_KEY_OPTION,
+    NFL_TEAM_OPTION,
     UNITS_OPTION
 ]
 
@@ -113,6 +130,10 @@ function switchBirthdayChanged(inputEvent) {
     localStorage.setItem(SHOW_BIRTHDAYS_OPTION.storageKey, inputEvent.target.checked)
 }
 
+function switchNFLChanged(inputEvent) {
+    localStorage.setItem(SHOW_NFL_OPTION.storageKey, inputEvent.target.checked)
+}
+
 function switchWeatherChanged(inputEvent) {
     localStorage.setItem(SHOW_WEATHER_OPTION.storageKey, inputEvent.target.checked)
 }
@@ -123,6 +144,10 @@ function zipcodeChanged(inputEvent) {
 
 function weatherApiKeyChanged(inputEvent) {
     localStorage.setItem(WEATHER_API_KEY_OPTION.storageKey, inputEvent.target.value)
+}
+
+function nflTeamChanged(inputEvent) {
+    localStorage.setItem(NFL_TEAM_OPTION.storageKey, inputEvent.target.value)
 }
 
 function weatherUnitsChanged(inputEvent) {
