@@ -120,7 +120,7 @@ body {
     text-transform: uppercase;
 }
 
-.quote {
+#quote {
     font-family: "Crimson Text", serif;
     font-weight: 300;
     font-size: 1.2em;
@@ -130,7 +130,7 @@ body {
     box-sizing: border-box;
 }
 
-.quote::before {
+#quote::before {
     content: "\201c \201d";
     font-size: 6em;
     position: relative;

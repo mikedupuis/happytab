@@ -31,5 +31,9 @@ function fetchQuote() {
 
 if (options.showQuote) {
     fetchQuote();
+} else {
+    var element = document.getElementById("quote")
+    console.log(element)
+    element.parentNode.removeChild(element);
 }
 
