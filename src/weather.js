@@ -6,8 +6,6 @@ var zipCode = options.zipcode
 var apiKey = options.weatherApiKey
 var units = options.weatherUnits
 
-console.log("units", units)
-
 function setTemp(data) {
     var suffix = ""
     if (units == IMPERIAL) {

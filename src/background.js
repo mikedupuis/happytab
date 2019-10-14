@@ -21,7 +21,6 @@ function sleep(ms) {
 async function preloadImage(url) {
     var cacheImage = new Image();
     cacheImage.src = url;
-    console.log(cacheImage)
     while (!cacheImage.complete) {
         await sleep(10)
     }
@@ -80,7 +79,6 @@ function fetchAndSetBackgroundImage() {
     request.send();
 }
 
-console.log(options)
 if (options.showSidebar) {
     document.getElementById('main').style['margin-left'] = '310px'
     //margin-left: 325px;
