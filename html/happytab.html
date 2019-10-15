@@ -2,6 +2,7 @@
     <head>
         <link rel="shortcut icon" href="../assets/pineapple-128.png" />
         <link rel="stylesheet" type="text/css" href="../styles/styles.css" />
+        <link rel="stylesheet" type="text/css" href="../styles/nfl.css" />
         <title>HappyTab</title>
     </head>
     <body>
@@ -22,9 +23,20 @@
                 <p id="quote-of-the-day-quote"></p>
                 <p id="quote-of-the-day-author"></p>
             </div>
-            <div class="nfl">
-                <p id="nfl-away-team"></p>
-                <p id="nfl-home-team"></p>
+            <div class="nfl" id='nfl'>
+                <div id="nfl-teams" class="nfl-flex">
+                    <div id="nfl-home-team">
+                        <img id="nfl-home-team-logo" class="nfl-item" width="64" height="64"/>
+                        <p id="nfl-home-team-name" class="nfl-item"></p>
+                    </div>
+                    <p id="nfl-game-time"></p>
+                    <div id="nfl-away-team">
+                        <img id="nfl-away-team-logo" class="nfl-item" width="64" height="64" />
+                        <p id="nfl-away-team-name" class="nfl-item"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="nfl nfl-flex">
                 <p id="nfl-game-time"></p>
             </div>
         </div>
