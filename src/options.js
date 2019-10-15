@@ -27,7 +27,7 @@ const SHOW_QUOTE_OPTION = {
 
 const SHOW_NFL_OPTION = {
     elementId: 'switch-nfl',
-    defaultValue: true,
+    defaultValue: false,
     storageKey: 'showNFL',
     loader: loadOrDefaultBoolean,
     mutator: switchNFLChanged,
@@ -54,7 +54,7 @@ const WEATHER_API_KEY_OPTION = {
 
 const NFL_TEAM_OPTION = {
     elementId: 'nfl-team',
-    defaultValue: 'sea',
+    defaultValue: 'min',
     storageKey: 'nflTeam',
     loader: loadOrDefault,
     mutator: nflTeamChanged,
