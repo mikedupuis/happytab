@@ -1,0 +1,24 @@
+.weather {
+    margin-top: 0px;
+    padding: 0px;
+}
+
+#weather-temp {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 3em;
+    line-height: 100px;
+    margin: 0px;
+}
+
+#weather-location {
+    display: inline-block;
+    font-size: 1.5em;
+    margin: 0px;
+}
+
+#weather-img {
+    display: inline-block;
+    margin: 0px;
+}
+

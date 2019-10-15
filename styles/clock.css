@@ -1,0 +1,12 @@
+#clock-time {
+    display: inline-block;
+    font-size: 3em;
+    font-weight: 600;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+}
+
+#clock-date {
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+    text-transform: uppercase;
+}
+
