@@ -159,7 +159,7 @@ function fetchScore () {
                 var scores = parser.parseFromString(request.response,"text/xml");
                 var game = retrieveGame(team, scores.getElementsByTagName('g'))
                 if (game === null) {
-                    document.getElementById('nfl').style.display = 'none';
+                    hideNflDomElements();
                     return;
                 } else {
                     renderScore(game);
@@ -175,6 +175,12 @@ function fetchScore () {
     request.send();
 }
 
+function hideNflDomElements() {
+    document.getElementById('nfl').style.display = 'none';
+}
+
 if (options.showNFL) {
     fetchScore();
+} else {
+    hideNflDomElements();
 }
