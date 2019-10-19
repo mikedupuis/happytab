@@ -9,12 +9,14 @@
     "newtab": "html/happytab.html"
   },
 
-  "options_page": "html/options.html",
+  "options_ui": {
+	  "page": "html/options.html"
+  },
 
   "icons": {
     "64": "assets/pineapple-64.png",
     "128": "assets/pineapple-128.png"
   },
 
-  "permissions": ["storage", "topSites", "bookmarks"]
+  "permissions": ["storage", "bookmarks"]
 }
