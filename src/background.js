@@ -26,10 +26,17 @@ async function preloadImage(url) {
     }
 }
 
-async function setBackgroundImage(url) {
-    await preloadImage(url);
+async function setBackgroundImage() {
+	backgroundImageURL = localStorage.getItem( "backgroundURL" )
 
-    var body = document.getElementsByTagName('body')[0].style.backgroundImage = 'url(' + url + ')';
+	if ( !backgroundImageURL )
+	{
+		backgroundImageURL = "assets/bg.jpg"
+	}
+
+    await preloadImage(backgroundImageURL);
+
+    var body = document.getElementsByTagName('body')[0].style.backgroundImage = 'url(' + backgroundImageURL + ')';
 
     document.getElementById('loader').style.visibility = 'hidden';
     document.getElementById('cover').classList.add("hidden");;
@@ -44,7 +51,22 @@ function loaded() {
     alert('loaded')
 }
 
-function fetchAndSetBackgroundImage() {
+function shouldUpdateBackground() {
+    var backgroundExpiration = localStorage.getItem( "backgroundExpirationTimestamp" )
+
+    if (!backgroundExpiration) {
+		return true;
+    }
+
+	return Number(backgroundExpiration) <= Date.now()
+}
+
+function updateStoredBackgroundExipration() {
+	expirationPeriod = loadOrDefault( BACKGROUND_ROTATION_PERIOD_OPTION )
+	localStorage.setItem( "backgroundExpirationTimestamp", Date.now() + Number( expirationPeriod ) )
+}
+
+function updateStoredBackground() {
     const request = new XMLHttpRequest();
     request.timeout = 2000;
     request.onreadystatechange = function(e) {
@@ -62,14 +84,11 @@ function fetchAndSetBackgroundImage() {
                         break;
                     }
                 }
-                setBackgroundImage(url);
-            } else {
-                setBackgroundImage(DEFAULT_BACKGROUND_URL);
+
+                localStorage.setItem( "backgroundURL", url );
+				updateStoredBackgroundExipration()
             }
         }
-    }
-    request.ontimeout = function () {
-        setBackgroundImage(DEFAULT_BACKGROUND_URL);
     }
 
     // Max page as of 9/23/19
@@ -87,5 +106,10 @@ if (options.showSidebar) {
     document.getElementById('main').style['margin-left'] = '0'
 }
 
-fetchAndSetBackgroundImage();
+// Show cached background URL, even if it has expired, to save loading time
+setBackgroundImage()
 
+if ( shouldUpdateBackground() )
+{
+	updateStoredBackground()
+}
