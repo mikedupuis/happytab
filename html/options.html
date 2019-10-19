@@ -164,7 +164,6 @@
                     Type the zipcode of the region you would like weather
                     information to show
                 </span>
-                <div class="option" id=""
                 <!-- Weather API Key -->
                 <div class="option" id="show-weather-api-key-tooltip">
                     <form action="#">
@@ -185,44 +184,61 @@
                 >
                     Type your API Key for https://openweathermap.org/api
                 </span>
+				<!-- Numeric Textfield -->
+                <div class="option" id="rotation-period-tooltip">
+                    <form action="#">
+						<div class="mdl-textfield mdl-js-textfield">
+						<label for="user">Background Rotation Period</label>
+							<input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="background-rotation-period">
+							<label class="mdl-textfield__label" for="background-rotation-period">Period in Seconds...</label>
+							<span class="mdl-textfield__error">Input is not a number!</span>
+						</div>
+					</form>
+					<span
+						class="mdl-tooltip mdl-tooltip--right"
+						for="rotation-period-tooltip"
+					>
+						Number of seconds a loaded background should persist for
+					</span>
+				</div>
                 <!-- NFL TEAM -->
                 <div class="option" id="nfl-team-tooltip">
-                        <div class="mdl-textfield mdl-js-textfield">
-                        <label for="user">NFL TEAM</label>
-                        <select class="mdl-textfield__input" id="nfl-team" name="nfl-team">
-                            <option value="ari">Arizona Cardinals</option>
-                            <option value="atl">Atlanta Falcons</option>
-                            <option value="bal">Baltimore Ravens</option>
-                            <option value="buf">Buffalo Bills</option>
-                            <option value="car">Carolina Panthers</option>
-                            <option value="chi">Chicago Bears</option>
-                            <option value="cin">Cincinnati Bengals</option>
-                            <option value="cle">Cleveland Browns</option>
-                            <option value="dal">Dallas Cowboys</option>
-                            <option value="den">Denver Broncos</option>
-                            <option value="det">Detroit Lions</option>
-                            <option value="gb">Green Bay Packers</option>
-                            <option value="hou">Houston Texans</option>
-                            <option value="ind">Indianapolis Colts*</option>
-                            <option value="jax">Jacksonville Jaguars</option>
-                            <option value="kc">Kansas City Chiefs</option>
-                            <option value="lac">Los Angeles Chargers</option>
-                            <option value="lar">Los Angeles Rams</option>
-                            <option value="mia">Miami Dolphins</option>
-                            <option value="min">Minnesota Vikings	</option>
-                            <option value="ne">New England Patriots</option>
-                            <option value="no">New Orleans Saints</option>
-                            <option value="nyg">New York Giants</option>
-                            <option value="nyj">New York Jets</option>
-                            <option value="oak">Oakland Raiders</option>
-                            <option value="phi">Philadelphia Eagles</option>
-                            <option value="pit">Pittsburgh Steelers</option>
-                            <option value="sea">Seattle Seahawks</option>
-                            <option value="sf">San Francisco 49ers</option>
-                            <option value="tb">Tampa Bay Buccaneers</option>
-                            <option value="ten">Tennessee Titans</option>
-                            <option value="was">Washington Redskins</option>
-                        </select>
+					<div class="mdl-textfield mdl-js-textfield">
+						<label for="user">NFL TEAM</label>
+						<select class="mdl-textfield__input" id="nfl-team" name="nfl-team">
+							<option value="ari">Arizona Cardinals</option>
+							<option value="atl">Atlanta Falcons</option>
+							<option value="bal">Baltimore Ravens</option>
+							<option value="buf">Buffalo Bills</option>
+							<option value="car">Carolina Panthers</option>
+							<option value="chi">Chicago Bears</option>
+							<option value="cin">Cincinnati Bengals</option>
+							<option value="cle">Cleveland Browns</option>
+							<option value="dal">Dallas Cowboys</option>
+							<option value="den">Denver Broncos</option>
+							<option value="det">Detroit Lions</option>
+							<option value="gb">Green Bay Packers</option>
+							<option value="hou">Houston Texans</option>
+							<option value="ind">Indianapolis Colts</option>
+							<option value="jax">Jacksonville Jaguars</option>
+							<option value="kc">Kansas City Chiefs</option>
+							<option value="lac">Los Angeles Chargers</option>
+							<option value="lar">Los Angeles Rams</option>
+							<option value="mia">Miami Dolphins</option>
+							<option value="min">Minnesota Vikings</option>
+							<option value="ne">New England Patriots</option>
+							<option value="no">New Orleans Saints</option>
+							<option value="nyg">New York Giants</option>
+							<option value="nyj">New York Jets</option>
+							<option value="oak">Oakland Raiders</option>
+							<option value="phi">Philadelphia Eagles</option>
+							<option value="pit">Pittsburgh Steelers</option>
+							<option value="sea">Seattle Seahawks</option>
+							<option value="sf">San Francisco 49ers</option>
+							<option value="tb">Tampa Bay Buccaneers</option>
+							<option value="ten">Tennessee Titans</option>
+							<option value="was">Washington Redskins</option>
+						</select>
                     </div>
                 </div>
                 <span

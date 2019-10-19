@@ -79,6 +79,14 @@ const UNITS_OPTION = {
     property: 'value'
 }
 
+const BACKGROUND_ROTATION_PERIOD_OPTION = {
+    elementId: 'background-rotation-period',
+    defaultValue: 86400,
+    storageKey: 'backgroundRotationPeriod',
+    loader: loadOrDefault,
+    mutator: backgroundRotationPeriodChanged,
+    property: 'value'
+}
 
 const OPTIONS = [
     SHOW_SIDEBAR_OPTION,
@@ -89,7 +97,8 @@ const OPTIONS = [
     ZIPCODE_OPTION,
     WEATHER_API_KEY_OPTION,
     NFL_TEAM_OPTION,
-    UNITS_OPTION
+    UNITS_OPTION,
+	BACKGROUND_ROTATION_PERIOD_OPTION
 ]
 
 function loadOrDefault(option) {
@@ -141,6 +150,10 @@ function nflTeamChanged(inputEvent) {
 
 function weatherUnitsChanged(inputEvent) {
     localStorage.setItem(UNITS_OPTION.storageKey, inputEvent.target.value)
+}
+
+function backgroundRotationPeriodChanged(inputEvent) {
+	localStorage.setItem(BACKGROUND_ROTATION_PERIOD_OPTION.storageKey, inputEvent.target.value)
 }
 
 function loadOptionsData() {
