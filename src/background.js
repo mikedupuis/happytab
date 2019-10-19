@@ -31,7 +31,7 @@ async function setBackgroundImage() {
 
 	if ( !backgroundImageURL )
 	{
-		backgroundImageURL = "assets/bg.jpg"
+		backgroundImageURL = "../assets/bg.png"
 	}
 
     await preloadImage(backgroundImageURL);
@@ -52,6 +52,13 @@ function loaded() {
 }
 
 function shouldUpdateBackground() {
+	var storedBackground = localStorage.getItem( "backgroundURL" )
+
+	if ( !storedBackground )
+	{
+		return true;
+	}
+
     var backgroundExpiration = localStorage.getItem( "backgroundExpirationTimestamp" )
 
     if (!backgroundExpiration) {
