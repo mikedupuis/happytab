@@ -8,7 +8,7 @@ const ATTRIBUTES = {
     HOME_TEAM_NAME: 'h',
     HOME_TEAM_SCORE: 'hs',
     QUARTER: 'q',
-    TIME_REMAINING: 'l',
+    TIME_REMAINING: 'k',
     GAME_TIME: 't',
     GAME_DAY: 'd',
 }
@@ -101,6 +101,7 @@ function formatScore(game, team, score) {
 }
 
 function formatClock(game) {
+    console.log(game)
     var quarter = game.getAttribute(ATTRIBUTES.QUARTER)
 
     if (quarter === QUARTER_VALUES.HALFTIME) {
