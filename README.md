@@ -8,6 +8,7 @@
 
 HappyTab is a Chrome browser extension that displays the time and date, weather, quotes and all of your bookmarks in a single, beautiful webpage
 
+Link to the extension on the Chrome Web Store: https://chrome.google.com/webstore/detail/happytab/pfncgbifkmheijfeckfhmkeghcjfgifa
 ## Getting Started
 
 Getting started is easy! Simply follow the steps below
