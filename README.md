@@ -34,7 +34,17 @@ You should see the following:
 
 A number of settings can be configured in the Options page:
 
-![Options](assets/options.png)
+![Options](assets/config.png)
+
+
+#####Feature descriptions
+
+- User links created from bookmarks and displayed on dashboard.
+- Sidebar and Clock can be toggled on and off.
+- Quote of the day shown in side bar.
+- Custom weather updates (Add your Zipcode).
+- Updates of favourite NFL team.
+
 
 ## Built With
 
