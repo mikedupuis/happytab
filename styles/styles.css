@@ -131,3 +131,13 @@ body {
     transition: visibility 0s 1s, opacity 1s linear;
 }
 
+.floatBottomRight {
+	position: absolute;
+	bottom: 5px;
+	right: 5px;
+}
+
+#newBackgroundButton {
+	background: rgba(0, 0, 0, 0.5);
+	color: #FFF
+}

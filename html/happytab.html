@@ -6,6 +6,8 @@
         <link rel="stylesheet" type="text/css" href="../styles/nfl.css" />
         <link rel="stylesheet" type="text/css" href="../styles/quote.css" />
         <link rel="stylesheet" type="text/css" href="../styles/weather.css" />
+        <script defer src="../src/mdl/material.min.js"></script>
+        <link rel="stylesheet" href="../src/mdl/material.min.css" />
         <title>HappyTab</title>
     </head>
     <body>
@@ -46,6 +48,12 @@
         <div id="main">
             <div id="options"></div>
         </div>
+		<div class="floatBottomRight">
+			<!-- Raised button with ripple -->
+			<button id="newBackgroundButton" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+				New Background
+			</button>
+		</div>
     </body>
     <script src="../src/options.js"></script>
     <script src="../src/options-data.js"></script>
