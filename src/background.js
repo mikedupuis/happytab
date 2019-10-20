@@ -1,4 +1,4 @@
-const DEFAULT_BACKGROUND_URL = 'assets/bg.jpg'
+const DEFAULT_BACKGROUND_URL = '../assets/bg.jpg'
 
 Array.prototype.shuffle = function() {
     var input = this;
@@ -31,7 +31,7 @@ async function setBackgroundImage() {
 
 	if ( !backgroundImageURL )
 	{
-		backgroundImageURL = "../assets/bg.jpg"
+		backgroundImageURL = DEFAULT_BACKGROUND_URL;
 	}
 
     await preloadImage(backgroundImageURL);
@@ -45,10 +45,6 @@ async function setBackgroundImage() {
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
-}
-
-function loaded() {
-    alert('loaded')
 }
 
 function shouldUpdateBackground() {
@@ -70,7 +66,8 @@ function shouldUpdateBackground() {
 
 function updateStoredBackgroundExipration() {
 	expirationPeriod = loadOrDefault( BACKGROUND_ROTATION_PERIOD_OPTION )
-	localStorage.setItem( "backgroundExpirationTimestamp", Date.now() + Number( expirationPeriod ) )
+    var expirationTime = Date.now() + 1000 * Number(expirationPeriod) // Date.now() returns ms, so convert to seconds
+	localStorage.setItem( "backgroundExpirationTimestamp", expirationTime)
 }
 
 function updateStoredBackground( reloadBackground ) {
@@ -120,7 +117,6 @@ function loadNewBackground() {
 
 if (options.showSidebar) {
     document.getElementById('main').style['margin-left'] = '310px'
-    //margin-left: 325px;
 } else {
     document.getElementById('sidenav').style.display = 'none'
     document.getElementById('main').style['margin-left'] = '0'

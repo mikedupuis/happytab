@@ -131,13 +131,16 @@ body {
     transition: visibility 0s 1s, opacity 1s linear;
 }
 
-.floatBottomRight {
+#newBackgroundButton {
+    font-size: 2em;
 	position: absolute;
-	bottom: 5px;
-	right: 5px;
+	bottom: 10px;
+	right: 10px;
+	background: rgba(0, 0, 0, 0);
+    color: rgba(255, 255, 255, 0.5);
 }
 
-#newBackgroundButton {
-	background: rgba(0, 0, 0, 0.5);
-	color: #FFF
+#newBackgroundButton:hover {
+    cursor: pointer;
+	animation: spin 3s linear infinite;
 }
