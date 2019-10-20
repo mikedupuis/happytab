@@ -91,11 +91,12 @@ function updateStoredBackground( reloadBackground ) {
 			localStorage.setItem( "backgroundURL", url );
 			updateStoredBackgroundExipration()
 
-			if ( reloadBackground )
-			{
+			if ( reloadBackground ) {
 				setBackgroundImage()
-			}
-		}
+			} else {
+                preloadImage(url);
+            }
+        }
 	} )
 
     // Max page as of 9/23/19
