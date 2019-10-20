@@ -56,4 +56,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](./LICENSE)
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
+[The HappyTab Icon](https://www.flaticon.com/free-icon/pineapple_826934): Icon made by [freepik](https://www.flaticon.com/authors/freepik) from www.flaticon.com
