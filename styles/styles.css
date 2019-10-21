@@ -9,6 +9,12 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+
+    -webkit-transition: background 2s ease;
+    -moz-transition: background 2s ease;
+    -o-transition: background 2s ease;
+    -ms-transition: background 2s ease;
+    transition: background 2s ease;
 }
 
 #cover {
