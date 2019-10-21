@@ -1,6 +1,6 @@
 const SHOW_SIDEBAR_OPTION = {
     elementId: 'switch-sidebar',
-    defaultValue: true,
+    defaultValue: false,
     storageKey: 'showSidebar',
     loader: loadOrDefaultBoolean,
     mutator: switchSidebarChanged,
@@ -133,7 +133,17 @@ function switchNFLChanged(inputEvent) {
 }
 
 function switchWeatherChanged(inputEvent) {
-    localStorage.setItem(SHOW_WEATHER_OPTION.storageKey, inputEvent.target.checked)
+        localStorage.setItem(SHOW_WEATHER_OPTION.storageKey, inputEvent.target.checked)
+    if(inputEvent.target.checked === true){
+        document.getElementById('show-weather-api-key-tooltip').style.display = '';
+        document.getElementById('show-weather-zip-tooltip').style.display = '';
+        document.getElementById('weather-units-div').style.display = '';
+    }
+    if(inputEvent.target.checked === false){
+        document.getElementById('show-weather-api-key-tooltip').style.display = 'none';
+        document.getElementById('show-weather-zip-tooltip').style.display = 'none';
+        document.getElementById('weather-units-div').style.display = 'none';
+    }
 }
 
 function zipcodeChanged(inputEvent) {
@@ -173,5 +183,15 @@ function prepareOptionsUI() {
         element[option.property] = value
         element.onchange = option.mutator
     })
-}
 
+
+}
+//
+// const UNITS_OPTION = {
+//     elementId: 'weather-units',
+//     defaultValue: 'imperial',
+//     storageKey: 'weatherUnits',
+//     loader: loadOrDefault,
+//     mutator: weatherUnitsChanged,
+//     property: 'value'
+// }
