@@ -135,9 +135,9 @@ function switchNFLChanged(inputEvent) {
 function switchWeatherChanged(inputEvent) {
     localStorage.setItem(SHOW_WEATHER_OPTION.storageKey, inputEvent.target.checked);
     if(inputEvent.target.checked === true){
-        document.getElementById('show-weather-api-key-tooltip').style.display = '';
-        document.getElementById('show-weather-zip-tooltip').style.display = '';
-        document.getElementById('weather-units-div').style.display = '';
+        document.getElementById('show-weather-api-key-tooltip').style.display = 'block';
+        document.getElementById('show-weather-zip-tooltip').style.display = 'block';
+        document.getElementById('weather-units-div').style.display = 'block';
     }
     if(inputEvent.target.checked === false){
         document.getElementById('show-weather-api-key-tooltip').style.display = 'none';
