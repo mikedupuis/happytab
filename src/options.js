@@ -1,6 +1,6 @@
 const SHOW_SIDEBAR_OPTION = {
     elementId: 'switch-sidebar',
-    defaultValue: false,
+    defaultValue: true,
     storageKey: 'showSidebar',
     loader: loadOrDefaultBoolean,
     mutator: switchSidebarChanged,
@@ -133,7 +133,7 @@ function switchNFLChanged(inputEvent) {
 }
 
 function switchWeatherChanged(inputEvent) {
-        localStorage.setItem(SHOW_WEATHER_OPTION.storageKey, inputEvent.target.checked)
+    localStorage.setItem(SHOW_WEATHER_OPTION.storageKey, inputEvent.target.checked);
     if(inputEvent.target.checked === true){
         document.getElementById('show-weather-api-key-tooltip').style.display = '';
         document.getElementById('show-weather-zip-tooltip').style.display = '';
