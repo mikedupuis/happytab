@@ -1,10 +1,9 @@
-.main {
+body {
+    background: #f1d065;
     width: 100%;
     height: 100%;
-    padding: 10px;
-    overflow: scroll;
     margin: 0;
-    background: #f1d065;
+    padding: 0;
 }
 
 #options__title {
@@ -17,7 +16,8 @@
     height: auto;
     float: left;
 }
-.options__card {
+
+.centered {
     width: 500px;
     margin: 0 auto;
     padding: 3em;
