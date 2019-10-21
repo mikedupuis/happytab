@@ -186,12 +186,4 @@ function prepareOptionsUI() {
 
 
 }
-//
-// const UNITS_OPTION = {
-//     elementId: 'weather-units',
-//     defaultValue: 'imperial',
-//     storageKey: 'weatherUnits',
-//     loader: loadOrDefault,
-//     mutator: weatherUnitsChanged,
-//     property: 'value'
-// }
+
