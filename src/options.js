@@ -4,7 +4,8 @@ const SHOW_SIDEBAR_OPTION = {
     storageKey: 'showSidebar',
     loader: loadOrDefaultBoolean,
     mutator: switchSidebarChanged,
-    property: 'checked'
+    property: 'checked',
+    childStateInitializer: null
 }
 
 const SHOW_CLOCK_OPTION = {
@@ -13,7 +14,8 @@ const SHOW_CLOCK_OPTION = {
     storageKey: 'showClock',
     loader: loadOrDefaultBoolean,
     mutator: switchClockChanged,
-    property: 'checked'
+    property: 'checked',
+    childStateInitializer: null
 }
 
 const SHOW_QUOTE_OPTION = {
@@ -22,7 +24,8 @@ const SHOW_QUOTE_OPTION = {
     storageKey: 'showQuote',
     loader: loadOrDefaultBoolean,
     mutator: switchQuoteChanged,
-    property: 'checked'
+    property: 'checked',
+    childStateInitializer: null
 }
 
 const SHOW_NFL_OPTION = {
@@ -31,7 +34,8 @@ const SHOW_NFL_OPTION = {
     storageKey: 'showNFL',
     loader: loadOrDefaultBoolean,
     mutator: switchNFLChanged,
-    property: 'checked'
+    property: 'checked',
+    childStateInitializer: setNFLChildInputsVisibility
 }
 
 const SHOW_WEATHER_OPTION = {
@@ -40,7 +44,8 @@ const SHOW_WEATHER_OPTION = {
     storageKey: 'showWeather',
     loader: loadOrDefaultBoolean,
     mutator: switchWeatherChanged,
-    property: 'checked'
+    property: 'checked',
+    childStateInitializer: setWeatherChildInputsVisibility
 }
 
 const WEATHER_API_KEY_OPTION = {
@@ -49,7 +54,8 @@ const WEATHER_API_KEY_OPTION = {
     storageKey: 'weatherApiKey',
     loader: loadOrDefault,
     mutator: weatherApiKeyChanged,
-    property: 'value'
+    property: 'value',
+    childStateInitializer: null
 }
 
 const NFL_TEAM_OPTION = {
@@ -58,7 +64,8 @@ const NFL_TEAM_OPTION = {
     storageKey: 'nflTeam',
     loader: loadOrDefault,
     mutator: nflTeamChanged,
-    property: 'value'
+    property: 'value',
+    childStateInitializer: null
 }
 
 const ZIPCODE_OPTION = {
@@ -67,7 +74,8 @@ const ZIPCODE_OPTION = {
     storageKey: 'zipcode',
     loader: loadOrDefault,
     mutator: zipcodeChanged,
-    property: 'value'
+    property: 'value',
+    childStateInitializer: null
 }
 
 const UNITS_OPTION = {
@@ -76,7 +84,8 @@ const UNITS_OPTION = {
     storageKey: 'weatherUnits',
     loader: loadOrDefault,
     mutator: weatherUnitsChanged,
-    property: 'value'
+    property: 'value',
+    childStateInitializer: null
 }
 
 const BACKGROUND_ROTATION_PERIOD_OPTION = {
@@ -85,7 +94,8 @@ const BACKGROUND_ROTATION_PERIOD_OPTION = {
     storageKey: 'backgroundRotationPeriod',
     loader: loadOrDefault,
     mutator: backgroundRotationPeriodChanged,
-    property: 'value'
+    property: 'value',
+    childStateInitializer: null
 }
 
 const OPTIONS = [
@@ -128,22 +138,26 @@ function switchQuoteChanged(inputEvent) {
     localStorage.setItem(SHOW_QUOTE_OPTION.storageKey, inputEvent.target.checked)
 }
 
-function switchNFLChanged(inputEvent) {
-    localStorage.setItem(SHOW_NFL_OPTION.storageKey, inputEvent.target.checked)
+function setNFLChildInputsVisibility() {
+    var value = localStorage.getItem(SHOW_NFL_OPTION.storageKey) == 'true' ? '': 'none'
+    document.getElementById('nfl-team-tooltip').style.display = value;
 }
 
-function switchWeatherChanged(inputEvent) {
-    localStorage.setItem(SHOW_WEATHER_OPTION.storageKey, inputEvent.target.checked);
-    if(inputEvent.target.checked === true){
-        document.getElementById('show-weather-api-key-tooltip').style.display = 'block';
-        document.getElementById('show-weather-zip-tooltip').style.display = 'block';
-        document.getElementById('weather-units-div').style.display = 'block';
-    }
-    if(inputEvent.target.checked === false){
-        document.getElementById('show-weather-api-key-tooltip').style.display = 'none';
-        document.getElementById('show-weather-zip-tooltip').style.display = 'none';
-        document.getElementById('weather-units-div').style.display = 'none';
-    }
+function switchNFLChanged(inputEvent) {
+    localStorage.setItem(SHOW_NFL_OPTION.storageKey, inputEvent.target.checked)
+    setNFLChildInputsVisibility()
+}
+
+function setWeatherChildInputsVisibility() {
+    var value = localStorage.getItem(SHOW_WEATHER_OPTION.storageKey) == 'true' ? '': 'none'
+    document.getElementById('show-weather-api-key-tooltip').style.display = value;
+    document.getElementById('show-weather-zip-tooltip').style.display = value;
+    document.getElementById('weather-units-div').style.display = value;
+}
+
+async function switchWeatherChanged(inputEvent) {
+    await localStorage.setItem(SHOW_WEATHER_OPTION.storageKey, inputEvent.target.checked);
+    setWeatherChildInputsVisibility()
 }
 
 function zipcodeChanged(inputEvent) {
@@ -156,6 +170,7 @@ function weatherApiKeyChanged(inputEvent) {
 
 function nflTeamChanged(inputEvent) {
     localStorage.setItem(NFL_TEAM_OPTION.storageKey, inputEvent.target.value)
+    setNFLChildInputsVisibility()
 }
 
 function weatherUnitsChanged(inputEvent) {
@@ -182,6 +197,10 @@ function prepareOptionsUI() {
         var element = document.getElementById(option.elementId)
         element[option.property] = value
         element.onchange = option.mutator
+
+        if (option.childStateInitializer !== null) {
+            option.childStateInitializer()
+        }
     })
 
 

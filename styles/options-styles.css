@@ -29,9 +29,21 @@ body {
 }
 
 .option-switch {
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
 }
 
 form {
     margin: 0;
+}
+
+#general-options-title {
+    margin: 0;
+    padding: 0;
+}
+
+.options-card {
+    min-height: 0;
+    margin-bottom: 1em;
+    padding: 1em 1em 1em 2em;
 }
