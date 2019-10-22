@@ -3,7 +3,7 @@
   "description": "A new page extension",
 
   "manifest_version": 2,
-  "version": "0.2.1",
+  "version": "0.3.0",
 
   "chrome_url_overrides" : {
     "newtab": "html/happytab.html"
