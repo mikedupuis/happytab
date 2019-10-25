@@ -20,7 +20,7 @@ body {
 .centered {
     width: 500px;
     margin: 0 auto;
-    padding: 3em;
+    padding: 0;
 }
 
 .option {
@@ -46,4 +46,13 @@ form {
     min-height: 0;
     margin-bottom: 1em;
     padding: 1em 1em 1em 2em;
+}
+
+.note {
+    font-size: 1.2em;
+    line-height: 2em;
+}
+
+#bottom-buffer {
+    padding-bottom: 3em;
 }

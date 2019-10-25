@@ -3,9 +3,11 @@ const team = options.nflTeam.toUpperCase();
 var homeScore, awayScore, homeTeam, awayTeam, quarter, timeReamining, day, time;
 
 const ATTRIBUTES = {
-    VISITOR_TEAM_NAME: 'v',
+    VISITOR_TEAM_NAME: 'vnn',
+    VISITOR_TEAM_ABBREVIATION: 'v',
     VISITOR_TEAM_SCORE: 'vs',
-    HOME_TEAM_NAME: 'h',
+    HOME_TEAM_NAME: 'hnn',
+    HOME_TEAM_ABBREVIATION: 'h',
     HOME_TEAM_SCORE: 'hs',
     QUARTER: 'q',
     TIME_REMAINING: 'k',
@@ -24,6 +26,7 @@ const HOME_TEAM_DATA = {
     nameElementId: 'nfl-home-team-name',
     logoElementId: 'nfl-home-team-logo',
     nameXmlAttribute: ATTRIBUTES.HOME_TEAM_NAME,
+    abbreviationXmlAttribute: ATTRIBUTES.HOME_TEAM_ABBREVIATION,
     scoreXmlAttribute: ATTRIBUTES.HOME_TEAM_SCORE
 }
 
@@ -31,6 +34,7 @@ const AWAY_TEAM_DATA = {
     nameElementId: 'nfl-away-team-name',
     logoElementId: 'nfl-away-team-logo',
     nameXmlAttribute: ATTRIBUTES.VISITOR_TEAM_NAME,
+    abbreviationXmlAttribute: ATTRIBUTES.VISITOR_TEAM_ABBREVIATION,
     scoreXmlAttribute: ATTRIBUTES.VISITOR_TEAM_SCORE
 }
 
@@ -39,7 +43,7 @@ function isGameOver(game) {
 }
 
 function isTeamPlaying(team, game) {
-    return (game.getAttribute(ATTRIBUTES.HOME_TEAM_NAME) == team || game.getAttribute(ATTRIBUTES.VISITOR_TEAM_NAME) ==  team)
+    return (game.getAttribute(ATTRIBUTES.HOME_TEAM_ABBREVIATION) == team || game.getAttribute(ATTRIBUTES.VISITOR_TEAM_ABBREVIATION) ==  team)
 }
 
 function hasGameStarted(game) {
@@ -47,14 +51,10 @@ function hasGameStarted(game) {
 }
 
 function getTeamScore(game, team) {
-    return game.getAttribute(team.scoreXmlAttribute)
+    return parseInt(game.getAttribute(team.scoreXmlAttribute))
 }
 
 function highlightWinner(game) {
-    if (!isGameOver(game)) {
-        return false;
-    }
-
     var awayScore = getTeamScore(game, AWAY_TEAM_DATA)
     var homeScore = getTeamScore(game, HOME_TEAM_DATA)
 
@@ -68,21 +68,17 @@ function highlightWinner(game) {
 function renderTeamInfo(game, team) {
     renderTeamLogo(game, team)
     renderTeamNameAndScore(game, team)
-
-    if (isGameOver(game)) {
-        highlightWinner(game)
-    }
 }
 
 function renderTeamLogo(game, team) {
-    var teamName = game.getAttribute(team.nameXmlAttribute)
+    var teamName = game.getAttribute(team.abbreviationXmlAttribute)
     var teamLogoElement = document.getElementById(team.logoElementId)
     teamLogoElement.src = getLogo(teamName)
 }
 
 function renderTeamNameAndScore(game, team) {
     var teamNameElement = document.getElementById(team.nameElementId)
-    var teamName = game.getAttribute(team.nameXmlAttribute)
+    var teamName = game.getAttribute(team.abbreviationXmlAttribute)
     if (hasGameStarted(game)) {
         var score = getTeamScore(game, team)
         teamNameElement.textContent = teamName + " - " + score
@@ -134,6 +130,10 @@ function renderScore(game) {
     renderTeamInfo(game, AWAY_TEAM_DATA)
     renderTeamInfo(game, HOME_TEAM_DATA)
     document.getElementById("nfl-game-time").textContent = formatClock(game);
+
+    if (isGameOver(game)) {
+        highlightWinner(game)
+    }
 }
 
 function renderError() {
