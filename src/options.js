@@ -179,6 +179,9 @@ function weatherUnitsChanged(inputEvent) {
 
 function backgroundRotationPeriodChanged(inputEvent) {
 	localStorage.setItem(BACKGROUND_ROTATION_PERIOD_OPTION.storageKey, inputEvent.target.value)
+
+    // Expire the existing background immediately 
+    localStorage.setItem('backgroundExpirationTimestamp', 0)
 }
 
 function loadOptionsData() {
