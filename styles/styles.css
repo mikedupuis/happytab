@@ -140,7 +140,7 @@ body {
 
 #newBackgroundButton {
     font-size: 2em;
-	position: absolute;
+	position: fixed;
 	bottom: 10px;
 	right: 10px;
 	background: rgba(0, 0, 0, 0);
