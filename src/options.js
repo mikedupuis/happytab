@@ -28,16 +28,6 @@ const SHOW_QUOTE_OPTION = {
     childStateInitializer: null
 }
 
-const SHOW_NFL_OPTION = {
-    elementId: 'switch-nfl',
-    defaultValue: false,
-    storageKey: 'showNFL',
-    loader: loadOrDefaultBoolean,
-    mutator: switchNFLChanged,
-    property: 'checked',
-    childStateInitializer: setNFLChildInputsVisibility
-}
-
 const SHOW_WEATHER_OPTION = {
     elementId: 'switch-weather',
     defaultValue: true,
@@ -54,16 +44,6 @@ const WEATHER_API_KEY_OPTION = {
     storageKey: 'weatherApiKey',
     loader: loadOrDefault,
     mutator: weatherApiKeyChanged,
-    property: 'value',
-    childStateInitializer: null
-}
-
-const NFL_TEAM_OPTION = {
-    elementId: 'nfl-team',
-    defaultValue: 'min',
-    storageKey: 'nflTeam',
-    loader: loadOrDefault,
-    mutator: nflTeamChanged,
     property: 'value',
     childStateInitializer: null
 }
@@ -102,11 +82,9 @@ const OPTIONS = [
     SHOW_SIDEBAR_OPTION,
     SHOW_CLOCK_OPTION,
     SHOW_QUOTE_OPTION,
-    SHOW_NFL_OPTION,
     SHOW_WEATHER_OPTION,
     ZIPCODE_OPTION,
     WEATHER_API_KEY_OPTION,
-    NFL_TEAM_OPTION,
     UNITS_OPTION,
 	BACKGROUND_ROTATION_PERIOD_OPTION
 ]
@@ -138,16 +116,6 @@ function switchQuoteChanged(inputEvent) {
     localStorage.setItem(SHOW_QUOTE_OPTION.storageKey, inputEvent.target.checked)
 }
 
-function setNFLChildInputsVisibility() {
-    var value = localStorage.getItem(SHOW_NFL_OPTION.storageKey) == 'true' ? '': 'none'
-    document.getElementById('nfl-team-tooltip').style.display = value;
-}
-
-function switchNFLChanged(inputEvent) {
-    localStorage.setItem(SHOW_NFL_OPTION.storageKey, inputEvent.target.checked)
-    setNFLChildInputsVisibility()
-}
-
 function setWeatherChildInputsVisibility() {
     var value = localStorage.getItem(SHOW_WEATHER_OPTION.storageKey) == 'true' ? '': 'none'
     document.getElementById('show-weather-api-key-tooltip').style.display = value;
@@ -166,11 +134,6 @@ function zipcodeChanged(inputEvent) {
 
 function weatherApiKeyChanged(inputEvent) {
     localStorage.setItem(WEATHER_API_KEY_OPTION.storageKey, inputEvent.target.value)
-}
-
-function nflTeamChanged(inputEvent) {
-    localStorage.setItem(NFL_TEAM_OPTION.storageKey, inputEvent.target.value)
-    setNFLChildInputsVisibility()
 }
 
 function weatherUnitsChanged(inputEvent) {
@@ -205,7 +168,5 @@ function prepareOptionsUI() {
             option.childStateInitializer()
         }
     })
-
-
 }
 

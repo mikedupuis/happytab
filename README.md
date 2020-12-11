@@ -44,8 +44,6 @@ A number of settings can be configured in the Options page:
 - Sidebar and Clock can be toggled on and off.
 - Quote of the day shown in side bar.
 - Custom weather updates (Add your Zipcode).
-- Updates of favourite NFL team.
-
 
 ## Built With
 
@@ -54,6 +52,17 @@ Good ol' fashioned JavaScript
 ## Contributing
 
 Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Releases
+
+1. Ensure `manifest.json` includes a new version number
+2. Create a release file by running the `create_zip.sh` script
+3. Login to Google as the Happytab development account
+4. Navigate to the developer portal
+5. In the `Your Listings` table, locate the `HappyTab` row and click `Edit`
+6. In the `Upload` section, click `Upload Updated Package`
+7. Select the file generated above (`happytab.zip`)
+8. Click `Upload`
 
 ## Authors
 
