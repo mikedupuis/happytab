@@ -1,2 +1,3 @@
+deleteRetiredOptions()
 var options = loadOptionsData()
 

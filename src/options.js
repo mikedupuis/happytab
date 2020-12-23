@@ -1,3 +1,16 @@
+const SHOW_NFL_OPTION_RETIRED = {
+    storageKey: 'showNFL',
+}
+
+const NFL_TEAM_OPTION_RETIRED = {
+    storageKey: 'nflTeam',
+}
+
+const RETIRED_OPTIONS = [
+    SHOW_NFL_OPTION_RETIRED,
+    NFL_TEAM_OPTION_RETIRED
+]
+
 const SHOW_SIDEBAR_OPTION = {
     elementId: 'switch-sidebar',
     defaultValue: true,
@@ -155,6 +168,17 @@ function loadOptionsData() {
     })
 
     return data
+}
+
+function deleteRetiredOptions() {
+    RETIRED_OPTIONS.forEach(function(option) {
+        if (!localStorage.getItem(option.storageKey)) {
+            return;
+        }
+
+        console.log("Deleting retired localStorage option " + option.storageKey)
+        localStorage.removeItem(option.storageKey)
+    })
 }
 
 function prepareOptionsUI() {
