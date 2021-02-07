@@ -128,7 +128,6 @@ assignNewBackgroundFunction()
 // Show cached background URL, even if it has expired, to save loading time
 setBackgroundImage()
 
-if ( shouldUpdateBackground() )
-{
-	updateStoredBackground( false )
+if (shouldUpdateBackground()) {
+	updateStoredBackground(false)
 }

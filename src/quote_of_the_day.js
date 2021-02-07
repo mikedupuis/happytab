@@ -1,39 +1,53 @@
-var request = new XMLHttpRequest()
+class QuoteOfTheDay {
+    constructor() { }
 
-function setQuote(quote, author) {
-    document.getElementById("quote-of-the-day-quote").textContent = quote;
-    document.getElementById("quote-of-the-day-author").textContent = ' - ' + author;
-}
+    execute() {
+        this.insertQuoteElement();
+        this.fetchQuote();
+    }
+    
+    setQuote(quote, author) {
+        this.quoteElement.textContent = quote;
+        this.authorElement.textContent = ' - ' + author;
+    }
 
-function setErrorQuote() {
-    setQuote('You miss 100% of the shots you don\'t take - Wayne Gretzky', 'Michael Scott')
-}
+    setErrorQuote() {
+        this.setQuote('You miss 100% of the shots you don\'t take - Wayne Gretzky', 'Michael Scott')
+    }
 
-function fetchQuote() {
-    const request = new XMLHttpRequest();
-    request.timeout = 2000;
-    request.onreadystatechange = function(e) {
-        if (request.readyState === 4) {
-            if (request.status === 200) {
-                quote = JSON.parse(request.response).contents.quotes[0];
-                setQuote(quote.quote, quote.author);
-            } else {
-                setErrorQuote();
+    fetchQuote() {
+        const request = new XMLHttpRequest();
+        request.timeout = 2000;
+        request.onreadystatechange = function(e) {
+            if (request.readyState === 4) {
+                if (request.status === 200) {
+                    this.response = request.response
+                    var data = JSON.parse(this.response);
+
+                    var quote = data.contents.quotes[0];
+                    this.setQuote(quote.quote, quote.author);
+                } else {
+                    this.setErrorQuote();
+                }
             }
+        }.bind(this)
+        request.ontimeout = function () {
+            this.setErrorQuote();
         }
+        request.open('GET', 'http://quotes.rest/qod.json', true)
+        request.send();
     }
-    request.ontimeout = function () {
-        setErrorQuote();
+
+    insertQuoteElement() {
+        var sideNavElement = document.getElementById('sidenav');
+        var quote = createDivWithId('quote')
+
+        sideNavElement.appendChild(quote)
+
+        this.quoteElement = createDivWithId('quote-quote')
+        quote.appendChild(this.quoteElement);
+
+        this.authorElement = createDivWithId('quote-author')
+        quote.appendChild(this.authorElement);
     }
-    request.open('GET', 'http://quotes.rest/qod.json', true)
-    request.send();
 }
-
-if (options.showQuote) {
-    fetchQuote();
-} else {
-    var element = document.getElementById("quote")
-    console.log(element)
-    element.parentNode.removeChild(element);
-}
-
