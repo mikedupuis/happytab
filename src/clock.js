@@ -1,66 +1,103 @@
-function getDayName(i) {
-    var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friay", "Saturday"];
-    return dayNames[i];
-}
+class Clock {
+    static DAY_NAMES = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friay",
+        "Saturday"
+    ];
 
-function getMonthName(i) {
-    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    return months[i];
-}
+    static MONTH_NAMES = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+    ];
 
-function setDate(date) {
-    document.getElementById("clock-date").textContent = getDayName(date.getDay()) + ", " + getMonthName(date.getMonth()) + " " + date.getDate() + " " + date.getFullYear();
-}
+    constructor() { }
 
-function pad(num, size) {
-    var s = num+"";
-    while (s.length < size) s = "0" + s;
-    return s;
-}
-
-function setTime(date) {
-    var hourBase24 = date.getHours();
-    var specifier = hourBase24 > 12 ? "PM" : "AM";
-
-    var displayHour;
-    if (hourBase24 == 0) {
-        displayHour = 12;
-    } else if (hourBase24 > 12) {
-        displayHour = hourBase24 - 12;
-    } else {
-        displayHour = hourBase24;
+    execute() {
+        this.insertClockElement();
+        this.runClock();
     }
 
-    var displayMinute = pad(date.getMinutes(), 2);
-    var displaySecond = pad(date.getSeconds(), 2);
-
-    // Note that when seconds are displayed, the time can start looking a little funky
-    // H:MM:SS
-    //var time = displayHour + ":" + displayMinute + ":" + displaySecond;
-    // H:MM
-    var time = displayHour + ":" + displayMinute + " " + specifier;
-    document.getElementById("clock-time").textContent = time;
-    //document.getElementById("clock-specifier").textContent = specifier;
-}
-
-function updateClock() {
-    var currentTime = new Date()
-
-    setTime(currentTime)
-    setDate(currentTime)
-}
-
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-async function runClock() {
-    while (true) {
-        updateClock();
-        await sleep(1000);
+    getDayName(i) {
+        return Clock.DAY_NAMES[i];
     }
-}
 
-if (options.showClock) {
-    runClock();
+    getMonthName(i) {
+        return Clock.MONTH_NAMES[i];
+    }
+
+    setDate(date) {
+        this.clockDateElement.textContent = this.getDayName(date.getDay()) + ", " + this.getMonthName(date.getMonth()) + " " + date.getDate() + ", " + date.getFullYear();
+    }
+
+    pad(num, size) {
+        var s = num+"";
+        while (s.length < size) s = "0" + s;
+        return s;
+    }
+
+    getDisplayHour(hour) {
+        if (hour == 0) {
+            return 12;
+        } else if (hour > 12) {
+            return hour - 12;
+        } else {
+            return hour;
+        }
+    }
+
+    setTime(date) {
+        var hourBase24 = date.getHours();
+        var specifier = hourBase24 > 12 ? "PM" : "AM";
+
+        var displayHour = this.getDisplayHour(hourBase24);
+        var displayMinute = this.pad(date.getMinutes(), 2);
+
+        var time = displayHour + ":" + displayMinute + " " + specifier;
+        this.clockTimeElement.textContent = time;
+    }
+
+    updateClock() {
+        var currentTime = new Date()
+
+        this.setTime(currentTime)
+        this.setDate(currentTime)
+    }
+
+    sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async runClock() {
+        while (true) {
+            this.updateClock();
+            await sleep(1000);
+        }
+    }
+
+    insertClockElement() {
+        var sideNavElement = document.getElementById('sidenav');
+        var clock = createDivWithId('clock')
+
+        sideNavElement.appendChild(clock)
+
+        this.clockTimeElement = createDivWithId('clock-time')
+        clock.appendChild(this.clockTimeElement);
+
+        this.clockDateElement = createDivWithId('clock-date') 
+        clock.appendChild(this.clockDateElement);
+    }
 }

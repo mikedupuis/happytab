@@ -1,57 +1,79 @@
-var IMPERIAL = "imperial"
-var METRIC = "metric"
-var KELVIN = "kelvin"
+class Weather {
+    static IMPERIAL = "imperial"
+    static METRIC = "metric"
+    static KELVIN = "kelvin"
 
-var zipCode = options.zipcode
-var apiKey = options.weatherApiKey
-var units = options.weatherUnits
-
-function setTemp(data) {
-    var suffix = ""
-    if (units == IMPERIAL) {
-        suffix = ' \xB0F';
-    } else if (units == METRIC) {
-        suffix = ' \xB0C';
-    } else if (units == KELVIN) {
-        suffix = ' K';
+    constructor(zipCode, apiKey, units) {
+        this.zipCode = zipCode;
+        this.apiKey = apiKey;
+        this.units = units;
     }
 
-    document.getElementById("weather-temp").textContent = Math.round(data.main.temp) + suffix;
-}
+    execute() {
+        this.insertWeatherElement();
+        this.fetchWeather();
+    }
 
-function setLocation(data) {
-    document.getElementById("weather-location").textContent = data.name + ", " + data.sys.country;
-}
-
-function setImage(data) {
-    document.getElementById("weather-img").src = "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png";
-}
-
-function fetchWeather() {
-    const request = new XMLHttpRequest();
-    request.timeout = 2000;
-    request.onreadystatechange = function(e) {
-        if (request.readyState === 4) {
-            if (request.status === 200) {
-                var data = JSON.parse(this.response);
-
-                setTemp(data)
-                setLocation(data)
-                setImage(data)
-            } else {
-                // TODO: Handle errors
-            }
+    setTemp(data) {
+        var suffix = ""
+        if (this.units == Weather.IMPERIAL) {
+            suffix = ' \xB0F';
+        } else if (this.units == Weather.METRIC) {
+            suffix = ' \xB0C';
+        } else if (this.units == Weather.KELVIN) {
+            suffix = ' K';
         }
+
+        this.tempElement.textContent = Math.round(data.main.temp) + suffix;
     }
-    request.ontimeout = function () {
-        // TODO: Handle errors
+
+    setLocation(data) {
+        this.locationElement.textContent = data.name + ", " + data.sys.country;
     }
 
-    request.open('GET', 'https://api.openweathermap.org/data/2.5/weather?zip=' + zipCode + ',us&units=' + units + '&appid&appid=' + apiKey, true)
-    request.send();
-}
+    setImage(data) {
+        this.imageElement.src = "http://openweathermap.org/img/wn/" + data.weather[0].icon + "@2x.png";
+    }
 
-if (options.showWeather) {
-    fetchWeather();
-}
+    fetchWeather() {
+        const request = new XMLHttpRequest();
+        request.timeout = 2000;
+        request.onreadystatechange = function(e) {
+            if (request.readyState === 4) {
+                if (request.status === 200) {
+                    this.response = request.response
+                    var data = JSON.parse(this.response);
 
+                    this.setTemp(data)
+                    this.setLocation(data)
+                    this.setImage(data)
+                } else {
+                    // TODO: Handle errors
+                }
+            }
+        }.bind(this)
+        request.ontimeout = function () {
+            // TODO: Handle errors
+        }
+
+        var url = 'https://api.openweathermap.org/data/2.5/weather?zip=' + this.zipCode + ',us&units=' + this.units + '&appid&appid=' + this.apiKey
+        request.open('GET', 'https://api.openweathermap.org/data/2.5/weather?zip=' + this.zipCode + ',us&units=' + this.units + '&appid&appid=' + this.apiKey, true)
+        request.send();
+    }
+
+    insertWeatherElement() {
+        var sideNavElement = document.getElementById('sidenav');
+        var weather = createElementWithId('div', 'weather');
+
+        sideNavElement.appendChild(weather);
+
+        this.tempElement = createElementWithId('p', 'weather-temp');
+        weather.appendChild(this.tempElement);
+
+        this.imageElement = createElementWithId('img', 'weather-img');
+        weather.appendChild(this.imageElement);
+
+        this.locationElement = createElementWithId('p', 'weather-location');
+        weather.appendChild(this.locationElement);
+    }
+}

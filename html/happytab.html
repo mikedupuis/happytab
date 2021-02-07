@@ -13,21 +13,7 @@
         <div id="cover">
             <div id="loader"></div>
         </div>
-        <div id="sidenav" class="semi-transparent">
-            <div class="clock">
-                <div id="clock-time"></div>
-                <div id="clock-date"></div>
-            </div>
-            <div class="weather">
-                <p id="weather-temp"></p>
-                <img id="weather-img" />
-                <p id="weather-location"></p>
-            </div>
-            <div id="quote">
-                <p id="quote-of-the-day-quote"></p>
-                <p id="quote-of-the-day-author"></p>
-            </div>
-        </div>
+        <div id="sidenav" class="semi-transparent"></div>
         <div id="main">
             <div id="options"></div>
         </div>
@@ -35,11 +21,16 @@
             <i class="fas fa-sync-alt"></i>
 		</div>
     </body>
+
     <script src="../src/options.js"></script>
     <script src="../src/options-data.js"></script>
+    <script src="../src/dom_utilities.js"></script>
     <script src="../src/background.js"></script>
-    <script src="../src/quote_of_the_day.js"></script>
-    <script src="../src/weather.js"></script>
-    <script src="../src/clock.js"></script>
     <script src="../src/links.js"></script>
+
+    <!-- side nav widgets -->
+    <script src="../src/clock.js"></script>
+    <script src="../src/weather.js"></script>
+    <script src="../src/quote_of_the_day.js"></script>
+    <script src="../src/widget-manager.js"></script>
 </html>
