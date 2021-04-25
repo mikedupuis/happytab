@@ -11,6 +11,8 @@ function getZipcodes() {
 function buildWidgetsList() {
     var widgetsList = [];
 
+    widgetsList.push(new UpdateNotification(options.acknowledgedVersionNumber));
+
     if (options.showClock) {
         widgetsList.push(new Clock());
     }
