@@ -1,0 +1,19 @@
+.update {
+    display: flex;
+}
+
+.update-icon {
+    padding: 0.5em;
+    margin-top: 1em;
+    max-width: 10%;
+    color: #AA5555;
+}
+
+.update-icon:hover {
+    color: #FF5555;
+}
+
+.update-text {
+    max-width: "90%";
+}
+

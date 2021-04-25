@@ -12,6 +12,7 @@ const RETIRED_OPTIONS = [
 ]
 
 const SHOW_SIDEBAR_OPTION = {
+    display: true,
     elementId: 'switch-sidebar',
     defaultValue: true,
     storageKey: 'showSidebar',
@@ -22,6 +23,7 @@ const SHOW_SIDEBAR_OPTION = {
 }
 
 const SHOW_CLOCK_OPTION = {
+    display: true,
     elementId: 'switch-clock',
     defaultValue: false,
     storageKey: 'showClock',
@@ -32,6 +34,7 @@ const SHOW_CLOCK_OPTION = {
 }
 
 const SHOW_QUOTE_OPTION = {
+    display: true,
     elementId: 'switch-quote',
     defaultValue: true,
     storageKey: 'showQuote',
@@ -42,6 +45,7 @@ const SHOW_QUOTE_OPTION = {
 }
 
 const SHOW_WEATHER_OPTION = {
+    display: true,
     elementId: 'switch-weather',
     defaultValue: true,
     storageKey: 'showWeather',
@@ -52,6 +56,7 @@ const SHOW_WEATHER_OPTION = {
 }
 
 const WEATHER_API_KEY_OPTION = {
+    display: true,
     elementId: 'text-weather-api-key',
     defaultValue: '',
     storageKey: 'weatherApiKey',
@@ -62,6 +67,7 @@ const WEATHER_API_KEY_OPTION = {
 }
 
 const ZIPCODE_OPTION = {
+    display: true,
     elementId: 'text-zipcode',
     defaultValue: 55421,
     storageKey: 'zipcode',
@@ -72,6 +78,7 @@ const ZIPCODE_OPTION = {
 }
 
 const UNITS_OPTION = {
+    display: true,
     elementId: 'weather-units',
     defaultValue: 'imperial',
     storageKey: 'weatherUnits',
@@ -82,6 +89,7 @@ const UNITS_OPTION = {
 }
 
 const BACKGROUND_ROTATION_PERIOD_OPTION = {
+    display: true,
     elementId: 'background-rotation-period',
     defaultValue: 86400,
     storageKey: 'backgroundRotationPeriod',
@@ -89,6 +97,13 @@ const BACKGROUND_ROTATION_PERIOD_OPTION = {
     mutator: backgroundRotationPeriodChanged,
     property: 'value',
     childStateInitializer: null
+}
+
+const ACKNOWLEDGED_VERSION_NUMBER_OPTION = {
+    display: false,
+    defaultValue: 0,
+    storageKey: 'acknowledgedVersionNumber',
+    loader: loadOrDefault,
 }
 
 const OPTIONS = [
@@ -99,7 +114,8 @@ const OPTIONS = [
     ZIPCODE_OPTION,
     WEATHER_API_KEY_OPTION,
     UNITS_OPTION,
-	BACKGROUND_ROTATION_PERIOD_OPTION
+	BACKGROUND_ROTATION_PERIOD_OPTION,
+    ACKNOWLEDGED_VERSION_NUMBER_OPTION
 ]
 
 function loadOrDefault(option) {
@@ -160,6 +176,10 @@ function backgroundRotationPeriodChanged(inputEvent) {
     localStorage.setItem('backgroundExpirationTimestamp', 0)
 }
 
+function updateAcknowledgedOptionsNumber(newAcknowledgedOptionsNumber) {
+    localStorage.setItem(ACKNOWLEDGED_VERSION_NUMBER_OPTION.storageKey, newAcknowledgedOptionsNumber)
+}
+
 function loadOptionsData() {
     data = {}
     OPTIONS.forEach(function(option) {
@@ -183,6 +203,10 @@ function deleteRetiredOptions() {
 
 function prepareOptionsUI() {
     OPTIONS.forEach(function(option) {
+        if (!option.display) {
+            return
+        }
+
         var value = option.loader(option)
         var element = document.getElementById(option.elementId)
         element[option.property] = value
