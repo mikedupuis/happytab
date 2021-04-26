@@ -55,14 +55,15 @@ Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for details on our code of cond
 
 ## Releases
 
-1. Ensure `manifest.json` includes a new version number
-2. Create a release file by running the `create_zip.sh` script
-3. Login to Google as the Happytab development account
-4. Navigate to the developer portal
-5. In the `Your Listings` table, locate the `HappyTab` row and click `Edit`
-6. In the `Upload` section, click `Upload Updated Package`
-7. Select the file generated above (`happytab.zip`)
-8. Click `Upload`
+1. Update the default acknowledged version number if new updates have been added
+2. Ensure `manifest.json` includes a new version number
+3. Create a release file by running the `create_zip.sh` script
+4. Login to Google as the Happytab development account
+5. Navigate to the developer portal
+6. In the `Your Listings` table, locate the `HappyTab` row and click `Edit`
+7. In the `Upload` section, click `Upload Updated Package`
+8. Select the file generated above (`happytab.zip`)
+9. Click `Upload`
 
 ## Authors
 
