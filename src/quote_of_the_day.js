@@ -17,7 +17,7 @@ class QuoteOfTheDay {
 
     fetchQuote() {
         const request = new XMLHttpRequest();
-        request.timeout = 2000;
+        request.timeout = 5000;
         request.onreadystatechange = function(e) {
             if (request.readyState === 4) {
                 if (request.status === 200) {
@@ -33,7 +33,7 @@ class QuoteOfTheDay {
         }.bind(this)
         request.ontimeout = function () {
             this.setErrorQuote();
-        }
+        }.bind(this)
         request.open('GET', 'http://quotes.rest/qod.json', true)
         request.send();
     }
