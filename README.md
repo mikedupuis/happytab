@@ -30,13 +30,13 @@ You need Chrome installed on your computer
 
 You should see the following:
 
-![Screenshot](assets/screenshot.png)
+![Screenshot](assets/README1.png)
 
 ### Configuration
 
 A number of settings can be configured in the Options page:
 
-![Options](assets/config.png)
+![Options](assets/README2.png)
 
 ##### Feature descriptions
 
