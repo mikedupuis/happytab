@@ -42,8 +42,8 @@ A number of settings can be configured in the Options page:
 
 - User links created from bookmarks and displayed on dashboard.
 - Sidebar and Clock can be toggled on and off.
-- Quote of the day shown in side bar.
 - Custom weather updates (Add your Zipcode(s)).
+
 
 ## Built With
 
