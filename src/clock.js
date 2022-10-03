@@ -50,7 +50,7 @@ class Clock {
     }
 
     getDisplayHour(hour) {
-        if (hour == 0) {
+        if (hour === 0) {
             return 12;
         } else if (hour > 12) {
             return hour - 12;
@@ -60,18 +60,17 @@ class Clock {
     }
 
     setTime(date) {
-        var hourBase24 = date.getHours();
-        var specifier = hourBase24 > 12 ? "PM" : "AM";
+        let hourBase24 = date.getHours();
+        let specifier = hourBase24 > 12 ? "PM" : "AM";
 
-        var displayHour = this.getDisplayHour(hourBase24);
-        var displayMinute = this.pad(date.getMinutes(), 2);
+        let displayHour = this.getDisplayHour(hourBase24);
+        let displayMinute = this.pad(date.getMinutes(), 2);
 
-        var time = displayHour + ":" + displayMinute + " " + specifier;
-        this.clockTimeElement.textContent = time;
+        this.clockTimeElement.textContent = displayHour + ":" + displayMinute + " " + specifier;
     }
 
     updateClock() {
-        var currentTime = new Date()
+        let currentTime = new Date()
 
         this.setTime(currentTime)
         this.setDate(currentTime)
@@ -84,13 +83,13 @@ class Clock {
     async runClock() {
         while (true) {
             this.updateClock();
-            await sleep(1000);
+            await this.sleep(1000);
         }
     }
 
     insertClockElement() {
-        var sideNavElement = document.getElementById('sidenav');
-        var clock = createDivWithId('clock')
+        let sideNavElement = document.getElementById('sidenav');
+        let clock = createDivWithId('clock')
 
         sideNavElement.appendChild(clock)
 
