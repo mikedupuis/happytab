@@ -44,6 +44,7 @@ A number of settings can be configured in the Options page:
 - Sidebar and Clock can be toggled on and off.
 - Custom weather updates (Add your Zipcode(s)).
 
+
 ## Built With
 
 Good ol' fashioned JavaScript
