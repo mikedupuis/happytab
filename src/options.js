@@ -112,7 +112,7 @@ const OPTIONS = [
 ]
 
 function loadOrDefault(option) {
-    var result = localStorage.getItem(option.storageKey)
+    let result = localStorage.getItem(option.storageKey);
 
     if (result) {
         return result
@@ -123,7 +123,7 @@ function loadOrDefault(option) {
 }
 
 function loadOrDefaultBoolean(option) {
-    return loadOrDefault(option) == 'true' ? true : false
+    return loadOrDefault(option) === 'true'
 }
 
 function switchSidebarChanged(inputEvent) {
@@ -135,7 +135,7 @@ function switchClockChanged(inputEvent) {
 }
 
 function setWeatherChildInputsVisibility() {
-    var value = localStorage.getItem(SHOW_WEATHER_OPTION.storageKey) == 'true' ? '': 'none'
+    let value = localStorage.getItem(SHOW_WEATHER_OPTION.storageKey) === 'true' ? '': 'none'
     document.getElementById('show-weather-api-key-tooltip').style.display = value;
     document.getElementById('show-weather-zip-tooltip').style.display = value;
     document.getElementById('weather-units-div').style.display = value;
@@ -170,9 +170,15 @@ function updateAcknowledgedOptionsNumber(newAcknowledgedOptionsNumber) {
 }
 
 function loadOptionsData() {
-    data = {}
+    let data = {
+        showWeather: false,
+        showClock: false,
+        zipcode: 55421,
+        weatherApiKey: '',
+        weatherUnits: 'imperial',
+        showSidebar: true
+    }
     OPTIONS.forEach(function(option) {
-        var value = option.loader(option)
         data[option.storageKey] = option.loader(option)
     })
 
@@ -196,8 +202,8 @@ function prepareOptionsUI() {
             return
         }
 
-        var value = option.loader(option)
-        var element = document.getElementById(option.elementId)
+        let value = option.loader(option)
+        let element = document.getElementById(option.elementId)
         element[option.property] = value
         element.onchange = option.mutator
 

@@ -1,6 +1,6 @@
 .weather {
-    margin-top: 0px;
-    padding: 0px;
+    margin-top: 0;
+    padding: 0;
 }
 
 #weather-temp {
@@ -8,17 +8,17 @@
     vertical-align: top;
     font-size: 3em;
     line-height: 100px;
-    margin: 0px;
+    margin: 0;
 }
 
 #weather-location {
     display: inline-block;
     font-size: 1.5em;
-    margin: 0px;
+    margin: 0;
 }
 
 #weather-img {
     display: inline-block;
-    margin: 0px;
+    margin: 0;
 }
 
