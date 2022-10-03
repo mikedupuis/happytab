@@ -23,10 +23,6 @@ function buildWidgetsList() {
         });
     }
 
-    if (options.showQuote) {
-        widgetsList.push(new QuoteOfTheDay());
-    }
-
     return widgetsList;
 }
 

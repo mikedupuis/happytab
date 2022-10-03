@@ -6,9 +6,14 @@ const NFL_TEAM_OPTION_RETIRED = {
     storageKey: 'nflTeam',
 }
 
+const SHOW_QUOTE_OPTION_RETIRED = {
+    storageKey: 'showQuote',
+}
+
 const RETIRED_OPTIONS = [
     SHOW_NFL_OPTION_RETIRED,
-    NFL_TEAM_OPTION_RETIRED
+    NFL_TEAM_OPTION_RETIRED,
+    SHOW_QUOTE_OPTION_RETIRED
 ]
 
 const SHOW_SIDEBAR_OPTION = {
@@ -29,17 +34,6 @@ const SHOW_CLOCK_OPTION = {
     storageKey: 'showClock',
     loader: loadOrDefaultBoolean,
     mutator: switchClockChanged,
-    property: 'checked',
-    childStateInitializer: null
-}
-
-const SHOW_QUOTE_OPTION = {
-    display: true,
-    elementId: 'switch-quote',
-    defaultValue: true,
-    storageKey: 'showQuote',
-    loader: loadOrDefaultBoolean,
-    mutator: switchQuoteChanged,
     property: 'checked',
     childStateInitializer: null
 }
@@ -109,7 +103,6 @@ const ACKNOWLEDGED_VERSION_NUMBER_OPTION = {
 const OPTIONS = [
     SHOW_SIDEBAR_OPTION,
     SHOW_CLOCK_OPTION,
-    SHOW_QUOTE_OPTION,
     SHOW_WEATHER_OPTION,
     ZIPCODE_OPTION,
     WEATHER_API_KEY_OPTION,
@@ -139,10 +132,6 @@ function switchSidebarChanged(inputEvent) {
 
 function switchClockChanged(inputEvent) {
     localStorage.setItem(SHOW_CLOCK_OPTION.storageKey, inputEvent.target.checked)
-}
-
-function switchQuoteChanged(inputEvent) {
-    localStorage.setItem(SHOW_QUOTE_OPTION.storageKey, inputEvent.target.checked)
 }
 
 function setWeatherChildInputsVisibility() {
