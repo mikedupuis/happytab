@@ -45,18 +45,19 @@ class UpdateNotification {
 
         updateElement.appendChild(this.createUpdateIconElement(update));
         updateElement.appendChild(this.createUpdateTextElement(update));
-    
+
         return updateElement;
     }
     
     createUpdateIconElement(update) {
-        let icon = createIcon("fas", "fa-times-circle", "fa-lg")
+        let icon = createIconWithId("fas", "fa-times-circle", "fa-lg", 'update-x-button-' + update.versionId)
         icon.classList.add("update-icon")
 
         icon.addEventListener('click', {
             version: update.versionId,
             handleEvent: function (event) {
                 updateAcknowledgedOptionsNumber(this.version)
+                deleteItemWithId(icon.parentElement.id)
             }
         });
         return icon;
