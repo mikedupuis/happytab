@@ -1,3 +1,3 @@
 deleteRetiredOptions()
-var options = loadOptionsData()
+let options = loadOptionsData()
 

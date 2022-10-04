@@ -1,16 +1,16 @@
 const DEFAULT_BACKGROUND_URL = '../assets/bg.jpg'
 
 Array.prototype.shuffle = function() {
-	const input = this;
+	let input = this;
 
 	for (let i = input.length-1; i >=0; i--) {
-
-		const randomIndex = Math.floor(Math.random() * (i + 1));
-		const itemAtIndex = input[randomIndex];
+		let randomIndex = Math.floor(Math.random() * (i + 1));
+		let itemAtIndex = input[randomIndex];
 
 		input[randomIndex] = input[i];
         input[i] = itemAtIndex;
     }
+
     return input;
 }
 
@@ -21,16 +21,16 @@ function sleep(ms) {
 async function preloadImage(url) {
 	let cacheImage = new Image();
 	cacheImage.src = url;
+
     while (!cacheImage.complete) {
         await sleep(10)
     }
 }
 
 async function setBackgroundImage() {
-	backgroundImageURL = localStorage.getItem( "backgroundURL" )
+	let backgroundImageURL = localStorage.getItem("backgroundURL")
 
-	if ( !backgroundImageURL )
-	{
+	if (!backgroundImageURL) {
 		backgroundImageURL = DEFAULT_BACKGROUND_URL;
 	}
 
@@ -50,8 +50,7 @@ function getRandomInt(max) {
 function shouldUpdateBackground() {
 	let storedBackground = localStorage.getItem("backgroundURL");
 
-	if ( !storedBackground )
-	{
+	if (!storedBackground) {
 		return true;
 	}
 
@@ -75,7 +74,7 @@ function updateStoredBackground( reloadBackground ) {
     request.timeout = 2000;
     request.addEventListener( "load", function(e) {
 		if (request.status === 200) {
-			const data = JSON.parse(this.response);
+			let data = JSON.parse(this.response);
 
 			let url = DEFAULT_BACKGROUND_URL;
 			let shuffled = data.shuffle();

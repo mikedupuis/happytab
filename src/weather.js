@@ -16,11 +16,11 @@ class Weather {
 
     setTemp(data) {
         var suffix = ""
-        if (this.units == Weather.IMPERIAL) {
+        if (this.units === Weather.IMPERIAL) {
             suffix = ' \xB0F';
-        } else if (this.units == Weather.METRIC) {
+        } else if (this.units === Weather.METRIC) {
             suffix = ' \xB0C';
-        } else if (this.units == Weather.KELVIN) {
+        } else if (this.units === Weather.KELVIN) {
             suffix = ' K';
         }
 
@@ -56,14 +56,13 @@ class Weather {
             // TODO: Handle errors
         }
 
-        var url = 'https://api.openweathermap.org/data/2.5/weather?zip=' + this.zipCode + ',us&units=' + this.units + '&appid&appid=' + this.apiKey
         request.open('GET', 'https://api.openweathermap.org/data/2.5/weather?zip=' + this.zipCode + ',us&units=' + this.units + '&appid&appid=' + this.apiKey, true)
         request.send();
     }
 
     insertWeatherElement() {
-        var sideNavElement = document.getElementById('sidenav');
-        var weather = createElementWithId('div', 'weather');
+        let sideNavElement = document.getElementById('sidenav');
+        let weather = createElementWithId('div', 'weather');
 
         sideNavElement.appendChild(weather);
 

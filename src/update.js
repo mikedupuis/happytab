@@ -29,10 +29,10 @@ class UpdateNotification {
     }
 
     insertUdpateElements(updates) {
-        var sideNavElement = document.getElementById('sidenav');
-        var updatesElement = createElementWithId('div', 'updates');
+        let sideNavElement = document.getElementById('sidenav');
+        let updatesElement = createElementWithId('div', 'updates');
         updates.forEach(function (update) {
-            var updateElement = this.createUpdateElement(update);
+            let updateElement = this.createUpdateElement(update);
             updatesElement.appendChild(updateElement);
         }.bind(this));
 
@@ -40,7 +40,7 @@ class UpdateNotification {
     }
 
     createUpdateElement(update) {
-        var updateElement = createElementWithId('div', 'update-' + update.versionId);
+        let updateElement = createElementWithId('div', 'update-' + update.versionId);
         updateElement.classList.add("update")
 
         updateElement.appendChild(this.createUpdateIconElement(update));
@@ -50,7 +50,7 @@ class UpdateNotification {
     }
     
     createUpdateIconElement(update) {
-        var icon = createIcon("fas", "fa-times-circle", "fa-lg")
+        let icon = createIcon("fas", "fa-times-circle", "fa-lg")
         icon.classList.add("update-icon")
 
         icon.addEventListener('click', {
@@ -63,7 +63,7 @@ class UpdateNotification {
     }
 
     createUpdateTextElement(update) {
-        var text = createElementWithId('p', 'update-' + update.versionId);
+        let text = createElementWithId('p', 'update-' + update.versionId);
         text.classList.add("update-text")
         text.textContent = update.text;
 
