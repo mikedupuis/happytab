@@ -176,7 +176,8 @@ function loadOptionsData() {
         zipcode: 55421,
         weatherApiKey: '',
         weatherUnits: 'imperial',
-        showSidebar: true
+        showSidebar: true,
+        acknowledgedVersionNumber: undefined
     }
     OPTIONS.forEach(function(option) {
         data[option.storageKey] = option.loader(option)
