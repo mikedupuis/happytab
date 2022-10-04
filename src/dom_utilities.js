@@ -3,7 +3,7 @@ function createElement(type) {
 }
 
 function createElementWithId(type, id) {
-    var element = createElement(type);
+    let element = createElement(type);
     element.id = id;
 
     return element;
@@ -14,7 +14,7 @@ function createDivWithId(id) {
 }
 
 function createIcon(type, icon, sizeClass) {
-    var iconElement = createElement('i');
+    let iconElement = createElement('i');
     iconElement.classList.add(type);
     iconElement.classList.add(icon);
     iconElement.classList.add(sizeClass);
