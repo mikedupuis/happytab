@@ -6,9 +6,14 @@ const NFL_TEAM_OPTION_RETIRED = {
     storageKey: 'nflTeam',
 }
 
+const SHOW_QUOTE_OPTION_RETIRED = {
+    storageKey: 'showQuote',
+}
+
 const RETIRED_OPTIONS = [
     SHOW_NFL_OPTION_RETIRED,
-    NFL_TEAM_OPTION_RETIRED
+    NFL_TEAM_OPTION_RETIRED,
+    SHOW_QUOTE_OPTION_RETIRED
 ]
 
 const SHOW_SIDEBAR_OPTION = {
@@ -29,17 +34,6 @@ const SHOW_CLOCK_OPTION = {
     storageKey: 'showClock',
     loader: loadOrDefaultBoolean,
     mutator: switchClockChanged,
-    property: 'checked',
-    childStateInitializer: null
-}
-
-const SHOW_QUOTE_OPTION = {
-    display: true,
-    elementId: 'switch-quote',
-    defaultValue: true,
-    storageKey: 'showQuote',
-    loader: loadOrDefaultBoolean,
-    mutator: switchQuoteChanged,
     property: 'checked',
     childStateInitializer: null
 }
@@ -109,7 +103,6 @@ const ACKNOWLEDGED_VERSION_NUMBER_OPTION = {
 const OPTIONS = [
     SHOW_SIDEBAR_OPTION,
     SHOW_CLOCK_OPTION,
-    SHOW_QUOTE_OPTION,
     SHOW_WEATHER_OPTION,
     ZIPCODE_OPTION,
     WEATHER_API_KEY_OPTION,
@@ -119,7 +112,7 @@ const OPTIONS = [
 ]
 
 function loadOrDefault(option) {
-    var result = localStorage.getItem(option.storageKey)
+    let result = localStorage.getItem(option.storageKey);
 
     if (result) {
         return result
@@ -130,7 +123,7 @@ function loadOrDefault(option) {
 }
 
 function loadOrDefaultBoolean(option) {
-    return loadOrDefault(option) == 'true' ? true : false
+    return loadOrDefault(option) === 'true'
 }
 
 function switchSidebarChanged(inputEvent) {
@@ -141,12 +134,8 @@ function switchClockChanged(inputEvent) {
     localStorage.setItem(SHOW_CLOCK_OPTION.storageKey, inputEvent.target.checked)
 }
 
-function switchQuoteChanged(inputEvent) {
-    localStorage.setItem(SHOW_QUOTE_OPTION.storageKey, inputEvent.target.checked)
-}
-
 function setWeatherChildInputsVisibility() {
-    var value = localStorage.getItem(SHOW_WEATHER_OPTION.storageKey) == 'true' ? '': 'none'
+    let value = localStorage.getItem(SHOW_WEATHER_OPTION.storageKey) === 'true' ? '': 'none'
     document.getElementById('show-weather-api-key-tooltip').style.display = value;
     document.getElementById('show-weather-zip-tooltip').style.display = value;
     document.getElementById('weather-units-div').style.display = value;
@@ -181,9 +170,16 @@ function updateAcknowledgedOptionsNumber(newAcknowledgedOptionsNumber) {
 }
 
 function loadOptionsData() {
-    data = {}
+    let data = {
+        showWeather: false,
+        showClock: false,
+        zipcode: 55421,
+        weatherApiKey: '',
+        weatherUnits: 'imperial',
+        showSidebar: true,
+        acknowledgedVersionNumber: undefined
+    }
     OPTIONS.forEach(function(option) {
-        var value = option.loader(option)
         data[option.storageKey] = option.loader(option)
     })
 
@@ -207,8 +203,8 @@ function prepareOptionsUI() {
             return
         }
 
-        var value = option.loader(option)
-        var element = document.getElementById(option.elementId)
+        let value = option.loader(option)
+        let element = document.getElementById(option.elementId)
         element[option.property] = value
         element.onchange = option.mutator
 

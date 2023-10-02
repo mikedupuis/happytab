@@ -17,3 +17,7 @@
     max-width: "90%";
 }
 
+.update-fadeout {
+    opacity: 0;
+    transition: opacity 500ms;
+}

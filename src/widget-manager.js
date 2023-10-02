@@ -1,6 +1,6 @@
 
 function getZipcodes() {
-    var zipCodes = []
+    let zipCodes = [];
     options.zipcode.split(',').forEach(function(zipcode) {
         zipCodes.push(zipcode.trim());
     });
@@ -9,7 +9,7 @@ function getZipcodes() {
 }
 
 function buildWidgetsList() {
-    var widgetsList = [];
+    let widgetsList = [];
 
     widgetsList.push(new UpdateNotification(options.acknowledgedVersionNumber));
 
@@ -23,14 +23,10 @@ function buildWidgetsList() {
         });
     }
 
-    if (options.showQuote) {
-        widgetsList.push(new QuoteOfTheDay());
-    }
-
     return widgetsList;
 }
 
-var widgetsList = buildWidgetsList()
+let widgetsList = buildWidgetsList()
 widgetsList.forEach(function(widget) {
     widget.execute();
 });
