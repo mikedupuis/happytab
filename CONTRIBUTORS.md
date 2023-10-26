@@ -5,4 +5,4 @@
 * [Nigel Cox](https://github.com/bartius-nigel)
 * [Matthew Bunge](https://github.com/mattb555)
 * [Mayuran S](https://github.com/maybebored)
-* [Lewis Williams](https://github.com/lewis150193)
+* [Lewis Williams](https://github.com/ludo05)
